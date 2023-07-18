@@ -43,7 +43,7 @@ https://www.figma.com/file/zTsINAcFCfJmIcDZbaUw07/recette%E3%83%AF%E3%82%A4%E3%8
 
 ## ER図
 [スクリーンショット]
-<img width="700" alt="スクリーンショット 2023-07-13 18 25 56" src="https://github.com/yuta82644/recette_app/assets/130124114/43d923aa-2987-49d1-8b34-1219ba80a509">
+<img width="547" alt="スクリーンショット 2023-07-18 8 28 12" src="https://github.com/yuta82644/recette_app/assets/130124114/d1c471b5-e8e8-4f7e-bc39-49e86095d72f">
 
 ## 画面遷移図
 

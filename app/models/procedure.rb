@@ -1,3 +1,3 @@
 class Procedure < ApplicationRecord
-  bolongs_to :recipe
+  belongs_to :recipe
 end

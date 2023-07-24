@@ -1,3 +1,3 @@
 class CookingIngredient < ApplicationRecord
-  belings_to :recipe
+  belongs_to :recipe
 end

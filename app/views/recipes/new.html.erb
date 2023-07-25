@@ -1,0 +1,64 @@
+<h1>レシピ投稿</h1>
+<%= form_with(model: @recipe, local: true) do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  <div>
+    <%= f.label :short_comment %>
+    <%= f.text_area :short_comment %>
+  </div>
+  <div>
+    <%= f.label :tortal_quantity %>
+    <%= f.text_area :tortal_quantity %>
+  </div>
+
+  <h2>材料</h2>
+  <div id="cooking_ingredients">
+    <%= f.fields_for :cooking_ingredients do |ingredient| %>
+      <div class="ingredient-row">
+        <div>
+          <%= ingredient.label :ingredient_name %>
+          <%= ingredient.text_field :ingredient_name %>
+        </div>
+        <div>
+          <%= ingredient.label :quantity %>
+          <%= ingredient.number_field :quantity %>
+        </div>
+        <div>
+          <%= ingredient.label :unit %>
+          <%= ingredient.text_field :unit %>
+        </div>
+        <button type="button" class="btn btn-danger" onclick="removeIngredient(this)">削除</button>
+      </div>
+    <% end %>
+  </div>
+  <button type="button" class="btn btn-primary" id="addIngredient">材料を追加</button>
+  <h2>手順</h2>
+  <%= f.fields_for :procedures do |step| %>
+    <div>
+      <%= step.label :procedure_comment %>
+      <%= step.text_area :procedure_comment %>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= f.label :public %>
+    <%= f.check_box :public %> <!-- 一般公開のチェックボックスを追加 -->
+  </div>
+  <div class="form-group">
+    <%= f.label :room_id %>
+    <%= f.select :room_id, options_for_select(@user_rooms.pluck(:name, :id)), {}, class: "form-control" %>
+    <!-- ユーザーが所属するルームの選択リストを表示 -->
+  </div>
+
+
+  <%= f.submit "投稿" %>
+
+<% end %>
+
+
+

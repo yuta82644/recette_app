@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_path
+    redirect_to my_recipes_recipes_path
   end
 
   def my_recipes
@@ -71,10 +71,12 @@ class RecipesController < ApplicationController
       :public, # レシピに公開設定を保存するためのパラメータを追加
       :room_id, # レシピにルームIDを保存するためのパラメータを追加
       :public_post,
+      :image_cache,
       procedures_attributes: [:procedure_comment, :_destroy],
       cooking_ingredients_attributes: [:ingredient_name, :quantity, :unit, :_destroy]
     )
   end
+  
 
   def public_post?
      params["recipe"] && params["recipe"]["public_post"].present?

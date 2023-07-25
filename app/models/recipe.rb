@@ -6,4 +6,5 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :cooking_ingredients, allow_destroy: true
   belongs_to :user
   attr_accessor :public_post
+  mount_uploader :image, ImageUploader
 end

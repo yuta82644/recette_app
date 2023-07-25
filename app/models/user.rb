@@ -7,3 +7,4 @@ class User < ApplicationRecord
   has_many :room_assigns, dependent: :destroy
   has_many :rooms, through: :room_assigns, source: :room
   has_many :recipes
+end

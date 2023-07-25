@@ -11,9 +11,16 @@
   </head>
 
   <body>
-<%# <>あなたの名前:<%= current_user.name %>
+  <% if current_user %>
+<p>あなたの名前: <%= current_user.name %><p>
+<% else %>
+<p>未ログインユーザー</p>
+
+<% end %>
+
+
    <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
+     <%# < class="alert"><%= alert %>
 
      <% if user_signed_in? %>
   <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>

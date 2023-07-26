@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   resources :rooms
   devise_for :users
+  resources :categories, only: [:new, :create]
 
 end

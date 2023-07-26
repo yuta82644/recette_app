@@ -7,4 +7,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   attr_accessor :public_post
   mount_uploader :image, ImageUploader
+
+  has_many :recipe_categories
+  has_many :categories, through: :recipe_categories
 end

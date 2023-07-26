@@ -1,10 +1,9 @@
-<%= link_to 'My Recipes', my_recipes_recipes_path %>
-<h1>レシピ一覧</h1>
+<h1>お気に入り一覧</h1>
 
-<%= link_to "新しいレシピを投稿する", new_recipe_path, class: "btn btn-primary mb-4" %>
 
 <div class="recipe-container">
-  <% @recipes.each do |recipe| %>
+  <% @favorites.each do |favorite| %>
+    <% recipe = favorite.recipe %>
     <div class="recipe-card">
       <div class="recipe-info">
         <h5 class="recipe-title"><%= recipe.title %></h5>
@@ -26,15 +25,4 @@
 
 
 
-<% if current_user && current_user.rooms.any? %>
-  <h2>所属しているルーム</h2>
-  <ul>
-    <% current_user.rooms.each do |room| %>
-      <li><%= link_to room.name, room_path(room) %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= link_to 'ホームに戻る', recipes_path %>
-
-<%= link_to 'お気に入り一覧', favorites_path %>

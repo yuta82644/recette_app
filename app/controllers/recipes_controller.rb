@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :create, :my_recipes]
+  before_action :authenticate_user!, only: [:show, :new, :create, :my_recipes]
 
   def index
     if params[:room_id]
@@ -37,6 +37,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @favorite = current_user.favorites.find_by(recipe_id: @recipe.id)
   end
 
   def edit

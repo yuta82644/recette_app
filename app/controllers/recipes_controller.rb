@@ -22,12 +22,17 @@ class RecipesController < ApplicationController
   end
 
   def create
+     # ルームに属していない場合、room_idをnilに設定する
+    
+
+     @recipe = current_user.recipes.build(recipe_params)
       @recipe = Recipe.new(recipe_params)
       @recipe.user = current_user
 
       if @recipe.save
         redirect_to recipes_path(@recipe), notice: "レシピを投稿しました！"
       else
+
         render :new
       end
     end

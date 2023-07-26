@@ -38,3 +38,15 @@
 <%= link_to 'ホームに戻る', recipes_path %>
 
 <%= link_to 'お気に入り一覧', favorites_path %>
+<div>
+<% if current_user && current_user.rooms.any? %>
+  <h2>所属しているルーム</h2>
+  <ul>
+    <% current_user.rooms.each do |room| %>
+      <li><%= link_to room.name, room_path(room) %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+
+<%= link_to "新しいルーム作成", new_room_path %>

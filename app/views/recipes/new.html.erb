@@ -50,15 +50,18 @@
     <%= f.check_box :public %> <!-- 一般公開のチェックボックスを追加 -->
   </div>
   <div>
-    <%= f.label :room_id %>
+  <%= f.label :room_id %>
+  <% if @user_rooms.present? %>
     <%= f.select :room_id, options_for_select(@user_rooms.pluck(:name, :id)), {}, class: "form-control" %>
-    <!-- ユーザーが所属するルームの選択リストを表示 -->
-  </div>
-
+  <% else %>
+    <%= f.select :room_id, options_for_select([["一般公開", nil]]), {}, class: "form-control" %>
+  <% end %>
+</div>
 <div>
-    <%= f.label :category_ids, "Categories" %>
-    <%= f.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true } %>
-  </div>
+  <%= f.label :category_ids, "Categories" %>
+  <%= f.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true } %>
+</div>
+
 
 
   <%= f.submit "投稿" %>

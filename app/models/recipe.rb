@@ -12,4 +12,6 @@ class Recipe < ApplicationRecord
   has_many :categories, through: :recipe_categories
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
+
+  validates :room_id, presence: true, if: -> { room.present? }
 end

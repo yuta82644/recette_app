@@ -27,6 +27,18 @@
   </div>
 <% end %>
 
+
+<!-- コメント一覧を表示するための部分 -->
+<p>コメント一覧</p>
+<div id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @recipe.comments, recipe: @recipe } %>
+</div>
+
+<!-- コメント入力欄を表示するための部分 -->
+<%= render partial: 'comments/form', locals: { comment: Comment.new, recipe: @recipe } %>
+
+<%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
+
 <%# <% unless @recipe.user_id == current_user.id %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>

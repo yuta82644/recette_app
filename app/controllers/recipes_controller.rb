@@ -3,13 +3,16 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :my_recipes]
 
   def index
-    if params[:room_id]
-      @room = Room.find(params[:room_id])
-      @recipes = Recipe.where(public: true)
-    else
-      @recipes = Recipe.where(public: true)
-    end
+  @q = Recipe.ransack(params[:q])
+  @recipes = @q.result(distinct: true)
+
+  if params[:room_id]
+    @room = Room.find(params[:room_id])
+    @recipes = @room.recipes.where(public: true).ransack(params[:q]).result(distinct: true)
+  else
+    @recipes = @recipes.where(public: true)
   end
+end
 
   def new
     @recipe = Recipe.new
@@ -22,11 +25,10 @@ class RecipesController < ApplicationController
   end
 
   def create
-     # ルームに属していない場合、room_idをnilに設定する
-    
 
-     @recipe = current_user.recipes.build(recipe_params)
-      @recipe = Recipe.new(recipe_params)
+
+    @recipe = current_user.recipes.build(recipe_params)
+
       @recipe.user = current_user
 
       if @recipe.save

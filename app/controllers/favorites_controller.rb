@@ -3,8 +3,16 @@ class FavoritesController < ApplicationController
 
 
   def index
-    @favorites = current_user.favorites.includes(:recipe)
-  end
+  
+  
+  @q = current_user.favorites.includes(recipe: :categories).ransack(params[:q])
+  
+  
+  
+  @favorites = @q.result(distinct: true)
+end
+
+
   def create
     favorite = current_user.favorites.create(recipe_id: params[:recipe])
     redirect_to recipes_path, notice: "#{favorite.recipe.user.name}さんのレシピをお気に入り登録しました"

@@ -8,9 +8,9 @@ class RecipesController < ApplicationController
 
   if params[:room_id]
     @room = Room.find(params[:room_id])
-    @recipes = @room.recipes.where(public: true).ransack(params[:q]).result(distinct: true)
+    @recipes = @room.recipes.where(public: true).ransack(params[:q]).result(distinct: true).order(created_at: :desc)
   else
-    @recipes = @recipes.where(public: true)
+    @recipes = @recipes.where(public: true).order(created_at: :desc)
   end
 end
 

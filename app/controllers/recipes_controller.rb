@@ -67,8 +67,9 @@ end
   end
 
   def my_recipes
-    @user_recipes = current_user.recipes
-  end
+  @q = current_user.recipes.ransack(params[:q])
+  @user_recipes = @q.result(distinct: true)
+end
 
   private
 

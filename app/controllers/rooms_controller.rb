@@ -17,6 +17,9 @@ class RoomsController < ApplicationController
     @members = @room.users
 
     @recipes = @room.recipes
+
+     @q = @room.recipes.ransack(params[:q])
+  @recipes = @q.result(distinct: true).order(created_at: :desc)
   end
 
   def create

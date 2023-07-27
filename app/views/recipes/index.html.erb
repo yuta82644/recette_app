@@ -1,6 +1,19 @@
 <%= link_to 'My Recipes', my_recipes_recipes_path %>
 <h1>レシピ一覧</h1>
 
+
+<%= search_form_for @q, url: recipes_path, method: :get do |f| %>
+  <div class="field">
+    <%= f.label :title_cont, 'タイトル検索' %>
+    <%= f.search_field :title_cont %>
+  </div>
+  <div class="field">
+    <%= f.label :categories_name_eq, 'カテゴリー検索' %>
+    <%= f.collection_select :categories_name_eq, Category.all, :name, :name, include_blank: true %>
+  </div>
+  <%= f.submit '検索' %>
+<% end %>
+
 <%= link_to "新しいレシピを投稿する", new_recipe_path, class: "btn btn-primary mb-4" %>
 
 <div class="recipe-container">

@@ -14,4 +14,15 @@ class Recipe < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
 
   validates :room_id, presence: true, if: -> { room.present? }
+
+  # タイトル検索
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title]
+  end
+
+  # カテゴリーの検索用スコープ
+  def self.ransackable_associations(auth_object = nil)
+    %w[categories]
+  end
+
 end

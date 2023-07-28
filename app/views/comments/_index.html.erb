@@ -1,0 +1,22 @@
+<% comments.each do |comment| %>
+  <div>
+    <p><%= comment.content %></p>
+    <% if comment.user.present? %>
+      <p>投稿者: <%= comment.user.name %></p>
+   
+   <% end %>
+   
+    <!-- コメントの編集リンクを表示 -->
+    <% if comment.user == current_user %>
+     <li>
+       <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>
+        <p><%= comment.content %></p>
+        <p><%= link_to "コメント編集", edit_recipe_comment_path(recipe, comment), remote: true %></p>
+      </li>
+    <p><%= link_to "コメント削除", recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true,
+    data: { confirm: "本当に削除しますか?"} %></p>
+<% end %>
+
+<% end %>
+
+  </div>

@@ -1,9 +1,0 @@
-// update.js.erb
-
-<% if @comment.errors.any? %>
-  // 更新に失敗した場合の処理（エラーメッセージの表示など）
-  $("#error_explanation").html("<%= j render 'shared/error_messages', object: @comment %>");
-<% else %>
-  // 更新に成功した場合の処理（コメント内容の更新など）
-  $("#this_comment_<%= @comment.id %>").replaceWith("<%= j render 'comments/show', comment: @comment %>");
-<% end %>

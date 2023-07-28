@@ -55,6 +55,41 @@ end
   end
 end
 
+class RoomsController < ApplicationController
+  # 他のアクションは省略...
+
+  def create_comment
+    @room = Room.find(params[:id])
+    @comment = @room.comments.build(comment_params)
+    @comment.user = current_user
+
+    respond_to do |format|
+      if @comment.save
+        format.js { render :index }
+      else
+        format.html { redirect_to room_path(@room), notice: 'コメントを投稿できませんでした...' }
+      end
+    end
+  end
+
+  def destroy_comment
+    @comment = Comment.find(params[:comment_id])
+    @room = @comment.room
+    @comment.destroy
+
+    respond_to do |format|
+      format.js { render :index }
+    end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
+end
+
+
   private
   # ストロングパラメーター
   def comment_params

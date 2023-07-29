@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
         
       
   format.html { redirect_to recipe_path(@recipe), notice: 'コメントを投稿できませんでした...' }
-  puts @comment.errors.full_messages # エラーメッセージをコ
+ 
         
       
         

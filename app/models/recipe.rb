@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
-  
+
   validates :room_id, presence: true, if: -> { room.present? }
 
   # タイトル検索

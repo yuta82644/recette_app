@@ -1,3 +1,4 @@
-$("#comments_area").html("<%= j(render 'comments/index', { comments: @comment.recipe.comments, recipe: @comment.recipe }) %>");//
+$("#comments_area").html("<%= j(render 'comments/index', { comments: @comment.recipe.comments, recipe: @comment.recipe }) %>");
+
 $("textarea").val('');
 $("#notice").html("<%= j flash[:notice] %>");

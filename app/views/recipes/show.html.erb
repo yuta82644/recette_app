@@ -31,11 +31,11 @@
 <!-- コメント一覧を表示するための部分 -->
 <p>コメント一覧</p>
 <div id="comments_area">
-  <%= render partial: 'comments/index', locals: { comments: @recipe.comments, recipe: @recipe } %>
+  <%= render partial: 'comments/index', locals: { comments: @comments, recipe: @recipe } %>
 </div>
 
 <!-- コメント入力欄を表示するための部分 -->
-<%= render partial: 'comments/form', locals: { comment: Comment.new, recipe: @recipe } %>
+<%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
 
 <%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
 

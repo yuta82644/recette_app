@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-  # コメントを保存、投稿するためのアクションです。
+
   def create
-    # Recipeをパラメータの値から探し出し、Recipeに紐づくcommentsとしてbuildします。
+
     @recipe = Recipe.find(params[:recipe_id])
     @comment = @recipe.comments.build(comment_params)
    
@@ -11,22 +11,11 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.js {render :index}
-        
-       
-        
-        # binding.pry
-        
-      
+
       else
-        
-      
+
   format.html { redirect_to recipe_path(@recipe), notice: 'コメントを投稿できませんでした...' }
- 
-        
-      
-        
-      
-        
+
       end
     end
   end
@@ -37,9 +26,6 @@ class CommentsController < ApplicationController
   respond_to do |format|
     flash.now[:notice] = 'コメントの編集中'
     format.js { render :edit }
-    
-
-    
   end
 end
 

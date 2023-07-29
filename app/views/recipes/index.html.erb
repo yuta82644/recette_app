@@ -1,4 +1,11 @@
 <%= link_to 'My Recipes', my_recipes_recipes_path %>
+
+<% if current_user.try(:admin?) %>
+  <h1>Blogs_admin</h1>
+<% else %>
+  <h1>Blogs</h1>
+<% end %>
+
 <h1>レシピ一覧</h1>
 
 

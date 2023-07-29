@@ -45,6 +45,10 @@ end
   def show
     @recipe = Recipe.find(params[:id])
     @favorite = current_user.favorites.find_by(recipe_id: @recipe.id)
+    @comments = @recipe.comments
+    @comment = @recipe.comments.build
+    
+    
   end
 
   def edit

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :my_recipes
     end
+    resources :comments
   end
 
   resources :rooms

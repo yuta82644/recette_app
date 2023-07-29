@@ -1,0 +1,3 @@
+// edit.js.erb
+$("#this_comment_<%= @comment.id %>").replaceWith("<%= j render 'comments/edit', recipe: @recipe, comment: @comment %>");
+$("#notice").html("<%= j flash[:notice] %>");

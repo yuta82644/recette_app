@@ -16,11 +16,15 @@ class RoomsController < ApplicationController
     @user_rooms = current_user.rooms
     @members = @room.users
 
-    @recipes = @room.room_comments
-    @comments = @room.comments
-    @comment = @room.room_comments.build
-    @q = @room.recipes.ransack(params[:q])
-    @recipes = @q.result(distinct: true).order(created_at: :desc)
+    @recipes = @room.recipes
+
+# コメント機能
+  @comments = @room.room_comments
+  @comment = @room.room_comments.build
+
+  # 検索
+  @q = @room.recipes.ransack(params[:q])
+  @recipes = @q.result(distinct: true).order(created_at: :desc)
   end
 
   def create

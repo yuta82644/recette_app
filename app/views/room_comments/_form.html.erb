@@ -10,12 +10,12 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
 
-  <div class="actions" >
-    <%= form.submit "コメントを投稿する", remote: true %>
+  <div class="actions">
+    <%= form.submit "コメントを投稿する" %>
   </div>
 <% end %>

@@ -1,0 +1,19 @@
+<ul>
+  <% comments.each do |room_comment| %>
+    <% if room_comment.id.present? %>
+      <li>
+        <div class="comment-content" id="this_comment_<%= room_comment.id %>">
+          <p><%= room_comment.content %></p>
+          <% if room_comment.user.present? %>
+            <p>投稿者: <%= room_comment.user.name %></p>
+          <% end %>
+        </div>
+
+        <% if room_comment.user == current_user %>
+          <p><%= link_to "コメント編集", edit_room_room_comment_path(room, room_comment), remote: true %></p>
+          <p><%= link_to "コメント削除", room_room_comment_path(room, room_comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %></p>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

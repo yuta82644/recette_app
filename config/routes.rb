@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :rooms do
-     resources :room_comment
+     resources :room_comments
   end
 
   devise_for :users

@@ -2,11 +2,13 @@ class RoomCommentsController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
     @room_comment = @room.room_comments.build(room_comment_params)
+
     @room_comment.user = current_user
 
     respond_to do |format|
       if @room_comment.save
         format.js { render :index }
+        @comments = @room.room_comments.reload
       else
         format.html { redirect_to room_path(@room), notice: 'コメントを投稿できませんでした...' }
       end
@@ -30,6 +32,7 @@ class RoomCommentsController < ApplicationController
     respond_to do |format|
       if @room_comment.update(room_comment_params)
         flash.now[:notice] = 'コメントが編集されました'
+        @comments = @room.room_comments.reload
         format.js { render :index }
       else
         flash.now[:notice] = 'コメントの編集に失敗しました'
@@ -45,7 +48,10 @@ class RoomCommentsController < ApplicationController
     @room_comment.destroy
     respond_to do |format|
       flash.now[:notice] = 'コメントが削除されました'
-      format.js { render :index }
+      
+      format.js { 
+       @comments = @room.room_comments   
+      render :index }
     end
   end
 

@@ -61,7 +61,15 @@
 
 
 
-<!-- コメント一覧を表示するための部分 -->
+
+<p>comment</p>
+ <div id="comments_area">
+    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+    <%= render partial: 'room_comments/index', locals: { comments: @comments, room: @room } %>
+  </div>
+
+  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'room_comments/form', locals: { comment: @comment, room: @room } %>
 
 
 <%= link_to 'ホームに戻る', recipes_path %>

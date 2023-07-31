@@ -18,7 +18,12 @@ class RoomsController < ApplicationController
 
     @recipes = @room.recipes
 
-     @q = @room.recipes.ransack(params[:q])
+# コメント機能
+  @comments = @room.room_comments
+  @comment = @room.room_comments.build
+
+  # 検索
+  @q = @room.recipes.ransack(params[:q])
   @recipes = @q.result(distinct: true).order(created_at: :desc)
   end
 

@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :rooms
+  resources :rooms do
+     resources :room_comments
+  end
+
   devise_for :users
   resources :categories, only: [:new, :create]
 

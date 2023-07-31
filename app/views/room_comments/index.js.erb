@@ -1,0 +1,4 @@
+$("#comments_area").html("<%= j(render 'room_comments/index', comments: @comments, room: @room) %>");
+
+$("textarea").val('');
+$("#notice").html("<%= j flash[:notice] %>");

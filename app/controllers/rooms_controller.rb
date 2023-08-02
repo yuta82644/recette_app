@@ -25,6 +25,11 @@ class RoomsController < ApplicationController
   # 検索
   @q = @room.recipes.ransack(params[:q])
   @recipes = @q.result(distinct: true).order(created_at: :desc)
+
+   @tasks = @room.tasks.all
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @task = @room.tasks.new
+  
   end
 
   def create

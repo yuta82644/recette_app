@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :rooms do
      resources :room_comments
+     resources :tasks
   end
 
   devise_for :users

@@ -1,0 +1,6 @@
+<h1><%= @task.title %></h1>
+<p><%= @task.content %></p>
+<p>Task Date: <%= @task.start_time %></p>
+
+<%= link_to '削除', room_task_path(@room, @task), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+<%= link_to 'Back to Calendar', room_path(@room) %>

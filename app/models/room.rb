@@ -3,4 +3,5 @@ class Room < ApplicationRecord
   has_many :users, through: :room_assigns
   has_many :recipes
   has_many :room_comments
+  has_many :tasks, dependent: :destroy
 end

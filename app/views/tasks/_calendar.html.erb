@@ -1,0 +1,10 @@
+
+  <%= month_calendar events: @events do |date, events| %>
+    <%= date.day %>
+    <% events.each do |event| %>
+      <div>
+        <%= link_to event[:title], room_task_path(@room, event[:id]) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

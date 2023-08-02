@@ -72,4 +72,47 @@
   <%= render partial: 'room_comments/form', locals: { comment: @comment, room: @room } %>
 
 
+
+
+<!-- カレンダー表示 -->
+<%= month_calendar events: @tasks, start_date: Date.today, click_day: room_tasks_path(@room, date: '%{day}') do |date, tasks| %>
+  <%= date.day %>
+  <% tasks.each do |task| %>
+    <p><%= task.title %></p>
+    <p><%= task.content %></p>
+  <% end %>
+<% end %>
+
+
+
+<!-- タスク投稿フォーム -->
+<h2>タスクの投稿</h2>
+<%= form_with(model: [@room, Task.new]) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time, '開始日時' %>
+    <%= form.datetime_local_field :start_time %>
+  </div>
+
+  <%= form.submit '投稿' %>
+<% end %>
+
+<!-- ... (既存のコード) ... -->
+
+
+
+
+
+
+
+ 
 <%= link_to 'ホームに戻る', recipes_path %>

@@ -78,8 +78,8 @@
 <%= month_calendar events: @tasks, start_date: Date.today, click_day: room_tasks_path(@room, date: '%{day}') do |date, tasks| %>
   <%= date.day %>
   <% tasks.each do |task| %>
-    <p><%= task.title %></p>
-    <p><%= task.content %></p>
+    <p><%= link_to task.title, room_task_path(@room, task) %></p>
+   
   <% end %>
 <% end %>
 
@@ -106,7 +106,7 @@
   <%= form.submit '投稿' %>
 <% end %>
 
-<!-- ... (既存のコード) ... -->
+
 
 
 

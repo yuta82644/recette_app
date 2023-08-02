@@ -21,6 +21,18 @@ class TasksController < ApplicationController
     end
   end
 
+  def show
+    @room = Room.find(params[:room_id])
+    @task = @room.tasks.find(params[:id])
+  end
+
+
+   def destroy
+    @room = Room.find(params[:room_id])
+    @task = @room.tasks.find(params[:id])
+    @task.destroy
+    redirect_to room_path(@room), notice: '削除しました'
+  end
   private
 
   def set_room

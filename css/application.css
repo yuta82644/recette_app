@@ -15,51 +15,14 @@
  *= require simple_calendar
 
  */
-
-//  共通
 html {
   font-size: 100%;
 }
 
 body {
-  color: rgb(56, 54, 50);
-  background-color: #fafbfb;
-  font-family: 'Noto Sans JP', sans-serif;
+  color: #432;
 }
 
 a {
   text-decoration: none;
-}
-
-.wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0.4%;
-}
-
-// header
-
-.page_header {
-  height: 50px;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0px 4px 4px 0px rgba(119, 117, 117, 0.25);
-  display: flex;
-  align-items: center;
-
-  p {
-    margin: 0;
-    padding-left: 100px;
-  }
-}
-
-footer {
-  background-color: rgba(145, 145, 142, 0.364);
-  text-align: center;
-
-  padding: 26px 0;
-
-  p {
-    color: rgb(47, 48, 48);
-    font-size: 0.875rem;
-  }
 }

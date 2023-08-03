@@ -8,9 +8,14 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,700;1,400&family=Noto+Sans+JP:wght@100;200;300;400;500;600;700&family=Philosopher:ital@1&family=Zen+Kurenaido&display=swap" rel="stylesheet">
   </head>
 
   <body>
+  <%= render 'shared/header' %>
+
   <% if current_user %>
     <% if current_user.image.present? %>
       <img src="<%= current_user.image %>" class="icon_image">
@@ -40,5 +45,7 @@
     <p class="alert alert-error"><%= alert %></p>
   <% end %>
     <%= yield %>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>

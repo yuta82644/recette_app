@@ -12,11 +12,15 @@
 
   <body>
   <% if current_user %>
-<p>あなたの名前: <%= current_user.name %><p>
-<% else %>
-<p>未ログインユーザー</p>
-
-<% end %>
+    <% if current_user.image.present? %>
+      <img src="<%= current_user.image %>" class="icon_image">
+    <% else %>
+     <p>画像なし</p>
+    <% end %>
+    <p>あなたの名前: <%= current_user.name %></p>
+  <% else %>
+    <p>未ログインユーザー</p>
+  <% end %>
 
 
    <%# < class="notice"><%= notice %>

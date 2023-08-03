@@ -7,7 +7,7 @@
 <p><%= @recipe.short_comment %></p>
 
 <% if @recipe.image.present? %>
-        <%= image_tag recipe.image.url, class: "recipe-img" %>
+        <%= image_tag @recipe.image.url, class: "recipe-img" %>
       <% else %>
         <p>noimage</p>
       <% end %>

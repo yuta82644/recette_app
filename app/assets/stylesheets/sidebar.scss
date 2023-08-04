@@ -1,4 +1,3 @@
-
 /* Drawer */
 .overlay {
   width: 100%;
@@ -6,16 +5,17 @@
   position: fixed;
   left: 0;
   top: 0;
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 190;
   opacity: 0;
   visibility: hidden;
   transition: all 200ms ease-in;
 }
+
 nav.nav {
   width: 270px;
   height: 100vh;
-  background-color: #FFF;
+  background-color: #fff;
   left: -270px;
   top: 0;
   position: fixed;
@@ -23,10 +23,12 @@ nav.nav {
   transition: all 200ms ease-in-out;
   z-index: 199;
 }
+
 nav.nav ul {
-    border: none;
-    padding: 0;
+  border: none;
+  padding: 0;
 }
+
 .toggle {
   position: relative;
   left: 100%;
@@ -38,102 +40,82 @@ nav.nav ul {
   justify-content: center;
   font-size: 20px;
   cursor: pointer;
-}
-span.toggler,
-span.toggler:before,
-span.toggler:after {
-    content: '';
+
+  .toggler,
+  .toggler:before,
+  .toggler:after {
+    content: "";
     display: block;
     height: 3px;
     width: 25px;
     border-radius: 3px;
-    background-color: #ffffff;
+    background-color: #746d6d;
     position: absolute;
     pointer-events: none;
-}
+  }
 
-span.toggler:before{
+  .toggler:before {
     bottom: 9px;
-}
-span.toggler:after {
-    top: 9px;
-}
+  }
 
+  .toggler:after {
+    top: 9px;
+  }
+
+  &.active {
+    .toggler::before {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .toggler::after {
+      top: 50%;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+    #deleteconpo.toggler {
+      background-color: transparent;
+    }
+  }
+}
 
 .logo {
   text-align: center;
   margin-bottom: 30px;
+
+  a {
+    text-decoration: none;
+    color: #888;
+    font-size: 2rem;
+  }
 }
-.logo  a{
-  text-decoration: none;
-  color: #888;
-  font-size: 2rem;
-}
+
 .nav ul li {
   display: block;
   list-style: none;
   margin: 0;
   padding: 0;
-}
-.nav ul li a {
-  padding: 10px 20px;
-  display: block;
-  color: #313131;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: all 200ms ease;
-}
-.nav ul li a:hover {
-  background-color: #f1f1f1;
+
+  a {
+    padding: 10px 20px;
+    display: block;
+    color: #313131;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 200ms ease;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
 }
 
 /* Show Nav */
 .show-nav .nav {
   left: 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,.6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
+
 .show-nav .overlay {
   opacity: 1;
   visibility: visible;
 }
-
-/* ... Existing CSS ... */
-
-.toggle .toggler::before {
-  content: '';
-  display: block;
-  height: 3px;
-  width: 25px;
-  border-radius: 3px;
-  background-color: #ffffff;
-  position: absolute;
-  right: 0;
-  transition: all 200ms ease;
-}
-
-.toggle .toggler::after {
-  content: '';
-  display: block;
-  height: 3px;
-  width: 25px;
-  border-radius: 3px;
-  background-color: #ffffff;
-  position: absolute;
-  right: 0;
-  transition: all 200ms ease;
-}
-
-/* メニューが開かれた時のバツアイコン */
-.toggle.active .toggler::before {
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.toggle.active .toggler::after  {
-  top: 50%;
-  transform: translateY(-50%) rotate(-45deg);
-}
-.toggle.active #deleteconpo.toggler {
-  background-color: transparent;
-}
-

@@ -1,9 +1,10 @@
+
 /* Drawer */
 .overlay {
   width: 100%;
   height: 100vh;
   position: fixed;
-  right: 0;
+  left: 0;
   top: 0;
   background-color: rgba(0,0,0,.3);
   z-index: 190;
@@ -12,10 +13,10 @@
   transition: all 200ms ease-in;
 }
 nav.nav {
-  width: 300px;
+  width: 270px;
   height: 100vh;
   background-color: #FFF;
-  right: -300px;
+  left: -270px;
   top: 0;
   position: fixed;
   padding: 20px 0;
@@ -27,11 +28,11 @@ nav.nav ul {
     padding: 0;
 }
 .toggle {
-  position: absolute;
-  right: 100%;
+  position: relative;
+  left: 100%;
   width: 50px;
   height: 50px;
-  color: #313131;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +47,7 @@ span.toggler:after {
     height: 3px;
     width: 25px;
     border-radius: 3px;
-    background-color: #313131;
+    background-color: #ffffff;
     position: absolute;
     pointer-events: none;
 }
@@ -57,17 +58,7 @@ span.toggler:before{
 span.toggler:after {
     top: 9px;
 }
-span.deleteclass {
-    background-color: transparent;
-}
-span.deleteclass::before {
-    bottom: 0;
-    transform: rotate(45deg);
-}
-span.deleteclass::after {
-    top: 0;
-    transform: rotate(-45deg);
-}
+
 
 .logo {
   text-align: center;
@@ -87,7 +78,7 @@ span.deleteclass::after {
 .nav ul li a {
   padding: 10px 20px;
   display: block;
-  color: #534f4f;
+  color: #313131;
   font-size: 1rem;
   text-decoration: none;
   transition: all 200ms ease;
@@ -98,7 +89,7 @@ span.deleteclass::after {
 
 /* Show Nav */
 .show-nav .nav {
-  right: 0;
+  left: 0;
   box-shadow: 0 2px 4px rgba(0,0,0,.6);
 }
 .show-nav .overlay {
@@ -106,4 +97,43 @@ span.deleteclass::after {
   visibility: visible;
 }
 
+/* ... Existing CSS ... */
+
+.toggle .toggler::before {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 25px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  position: absolute;
+  right: 0;
+  transition: all 200ms ease;
+}
+
+.toggle .toggler::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 25px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  position: absolute;
+  right: 0;
+  transition: all 200ms ease;
+}
+
+/* メニューが開かれた時のバツアイコン */
+.toggle.active .toggler::before {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.toggle.active .toggler::after  {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+.toggle.active #deleteconpo.toggler {
+  background-color: transparent;
+}
 

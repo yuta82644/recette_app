@@ -3,24 +3,12 @@
 
 
 
-
-<%= link_to 'My Recipes', my_recipes_recipes_path %>
-
-<% if current_user.try(:admin?) %>
-  <h1>Blogs_admin</h1>
-<% else %>
-  <h1>Blogs</h1>
-<% end %>
-
-<h1>レシピ一覧</h1>
-
-
 <%= search_form_for @q, url: recipes_path, method: :get do |f| %>
-  <div class="field">
+  <div class="field wrapper">
     <%= f.label :title_cont, 'タイトル検索' %>
     <%= f.search_field :title_cont %>
   </div>
-  <div class="field">
+  <div class="field wrapper">
     <%= f.label :categories_name_eq, 'カテゴリー検索' %>
     <%= f.collection_select :categories_name_eq, Category.all, :name, :name, include_blank: true %>
   </div>
@@ -29,7 +17,7 @@
 
 <%= link_to "新しいレシピを投稿する", new_recipe_path, class: "btn btn-primary mb-4" %>
 
-<div class="recipe-container">
+<div class="recipe-container wrapper">
   <% @recipes.each do |recipe| %>
     <div class="recipe-card">
       <div class="recipe-info">
@@ -52,32 +40,11 @@
 
 
 
-<% if current_user && current_user.rooms.any? %>
-  <h2>所属しているルーム</h2>
-  <ul>
-    <% current_user.rooms.each do |room| %>
-      <li><%= link_to room.name, room_path(room) %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= link_to 'ホームに戻る', recipes_path %>
 
 <%= link_to 'お気に入り一覧', favorites_path %>
-<div>
-<% if current_user && current_user.rooms.any? %>
-  <h2>所属しているルーム</h2>
-  <ul>
-    <% current_user.rooms.each do |room| %>
-      <li><%= link_to room.name, room_path(room) %></li>
-    <% end %>
-  </ul>
-<% end %>
-</div>
-
-<%= link_to "新しいルーム作成", new_room_path %>
-<%= link_to "プロフィール編集", edit_user_registration_path %>
 
 
 
-<button type="button" class="btn btn-primary">Primary</button>
+
+

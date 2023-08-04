@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,700;1,400&family=Noto+Sans+JP:wght@100;200;300;400;500;600;700&family=Philosopher:ital@1&family=Zen+Kurenaido&display=swap" rel="stylesheet">
@@ -16,28 +17,10 @@
   <body>
   <%= render 'shared/header' %>
  
-  <% if current_user %>
-    <% if current_user.image.present? %>
-      <img src="<%= current_user.image %>" class="icon_image">
-    <% else %>
-     <p>画像なし</p>
-    <% end %>
-    <p>あなたの名前: <%= current_user.name %></p>
-  <% else %>
-    <p>未ログインユーザー</p>
-  <% end %>
+  
 
-
-   <%# < class="notice"><%= notice %>
-     <%# < class="alert"><%= alert %>
-
-     <% if user_signed_in? %>
-  <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-<% else %>
-   <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-<% end %>
-
+   
+    
  <% if notice %>
     <p class="alert alert-notice"><%= notice %></p>
   <% end %>

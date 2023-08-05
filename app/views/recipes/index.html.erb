@@ -4,11 +4,16 @@
 
 
 <%= search_form_for @q, url: recipes_path, method: :get do |f| %>
-  <div class="field wrapper">
+
+
+  
+
+
+  <div class="search_field">
     <%= f.label :title_cont, 'タイトル検索' %>
     <%= f.search_field :title_cont %>
   </div>
-  <div class="field wrapper">
+  <div class="search_field ">
     <%= f.label :categories_name_eq, 'カテゴリー検索' %>
     <%= f.collection_select :categories_name_eq, Category.all, :name, :name, include_blank: true %>
   </div>
@@ -48,3 +53,21 @@
 
 
 
+
+<span class="material-symbols-outlined">
+search
+</span>
+
+<%= search_form_for @q, url: recipes_path, method: :get do |f| %>
+  <div class="search_field">
+    <%= f.label :title_cont, 'タイトル検索' %>
+    <%= f.search_field :title_cont, class: "search_input" %>
+    <span class="material-symbols-outlined search_icon">&#xE8B6;</span>
+  </div>
+  <div class="search_field">
+    <%= f.label :categories_name_eq, 'カテゴリー検索' %>
+    <%= f.collection_select :categories_name_eq, Category.all, :name, :name, include_blank: true, class: "search_input" %>
+    <span class="material-symbols-outlined search_icon">&#xE8B6;</span>
+  </div>
+  <%= f.submit '', class: 'search_submit' %>
+<% end %>

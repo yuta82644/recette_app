@@ -66,9 +66,21 @@
 // 検索
 .search {
   margin-right: 40px;
-  
+
 }
 .search-container {
   display: flex;
   justify-content: flex-end;
+}
+
+.input-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+
+.input-group{
+  .dorop {
+    color: #464e57bd;
+  }
 }

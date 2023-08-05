@@ -10,28 +10,31 @@
 
 <%= search_form_for @q, url: recipes_path, method: :get do |f| %>
 
-
 <div class="search-container">
-    <div class="search col-3 ">
+  <div class="search col-3">
 
-      <div class="input-group ">
-  
-        <%= f.search_field :title_cont, class: "form-control" %>
-        <div class="input-group-append">
+    <div class="input-group">
+      <%= f.search_field :title_cont, class: "form-control", placeholder: "タイトル検索" %>
+      <div class="input-group-append">
         <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
-        <i class="bi bi-search"></i>
+          <i class="bi bi-search"></i>
         <% end %>
-        </div>
       </div>
+    </div>
 
-  <div class="search_field col-sm ">
-    <%= f.label :categories_name_eq, 'カテゴリー検索' %><i class="bi bi-search"></i>
-    <%= f.collection_select :categories_name_eq, Category.all, :name, :name, include_blank: true %>
+
+  <div class="input-group">
+    <%= f.collection_select :categories_name_eq, Category.all, :name, :name, {prompt: "カテゴリー検索 ↓" }, { class: "form-control dorop"} %>
+    <div class="input-group-append">
+      <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
+        <i class="bi bi-search"></i>
+      <% end %>
   </div>
     </div>
+  </div>
 </div>
- 
 <% end %>
+
 
 
 

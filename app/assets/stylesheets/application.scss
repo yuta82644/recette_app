@@ -45,7 +45,7 @@ a {
   box-shadow: 0px 4px 4px 0px rgba(119, 117, 117, 0.25);
   display: flex;
   align-items: center;
-
+  margin-bottom: 60px;
   p {
     margin: 0;
     padding-left: 100px;
@@ -72,11 +72,8 @@ footer {
 }
 
 // 検索
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48;
-  color: red;
+.btntt {
+  background-color: black;
+  color: white
+
 }

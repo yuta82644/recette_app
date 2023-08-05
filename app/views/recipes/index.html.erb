@@ -2,25 +2,38 @@
 <%= render 'shared/sidebar' %>
 
 
+  
+  <!-- Actual search box -->
+ 
+  
+
 
 <%= search_form_for @q, url: recipes_path, method: :get do |f| %>
 
 
+<div class="search-container">
+    <div class="search col-3 ">
+
+      <div class="input-group ">
   
+        <%= f.search_field :title_cont, class: "form-control" %>
+        <div class="input-group-append">
+        <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
+        <i class="bi bi-search"></i>
+        <% end %>
+        </div>
+      </div>
 
-
-  <div class="search_field">
-    <%= f.label :title_cont, 'タイトル検索' %>
-    <%= f.search_field :title_cont %>
-  </div>
-  <div class="search_field ">
-    <%= f.label :categories_name_eq, 'カテゴリー検索' %>
+  <div class="search_field col-sm ">
+    <%= f.label :categories_name_eq, 'カテゴリー検索' %><i class="bi bi-search"></i>
     <%= f.collection_select :categories_name_eq, Category.all, :name, :name, include_blank: true %>
   </div>
-  <%= f.submit '検索' %>
+    </div>
+</div>
+ 
 <% end %>
 
-<%= link_to "新しいレシピを投稿する", new_recipe_path, class: "btn btn-primary mb-4" %>
+
 
 <div class="recipe-container wrapper">
   <% @recipes.each do |recipe| %>
@@ -47,27 +60,10 @@
 
 <%= link_to 'ホームに戻る', recipes_path %>
 
-<%= link_to 'お気に入り一覧', favorites_path %>
 
 
 
 
 
 
-<span class="material-symbols-outlined">
-search
-</span>
 
-<%= search_form_for @q, url: recipes_path, method: :get do |f| %>
-  <div class="search_field">
-    <%= f.label :title_cont, 'タイトル検索' %>
-    <%= f.search_field :title_cont, class: "search_input" %>
-    <span class="material-symbols-outlined search_icon">&#xE8B6;</span>
-  </div>
-  <div class="search_field">
-    <%= f.label :categories_name_eq, 'カテゴリー検索' %>
-    <%= f.collection_select :categories_name_eq, Category.all, :name, :name, include_blank: true, class: "search_input" %>
-    <span class="material-symbols-outlined search_icon">&#xE8B6;</span>
-  </div>
-  <%= f.submit '', class: 'search_submit' %>
-<% end %>

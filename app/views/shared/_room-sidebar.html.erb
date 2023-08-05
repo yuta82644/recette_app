@@ -13,7 +13,7 @@
           <% if current_user.image.present? %>
             <img src="<%= current_user.image %>" class="icon_image">
           <% else %>
-            <p>画像なし</p>
+           <%= image_tag '/images/noimage-1-760x460.png', class: "icon_image" %>
           <% end %>
           <p class="user_name"> <%= current_user.name %></p>
         </div>
@@ -42,10 +42,9 @@
     </li>
     <li>
       <%= link_to "新しいルーム作成", new_room_path, class: "menu_text" %>
+      <%= link_to "ルーム編集", edit_room_path, class: "menu_text" %>
     </li>
-    <li>
-      <%= link_to "プロフィール編集", edit_user_registration_path, class: "menu_text" %>
-    </li>
+  
     <li>
       <% if user_signed_in? %>
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "menu_text" %>

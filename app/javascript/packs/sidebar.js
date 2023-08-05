@@ -4,12 +4,12 @@ const nav = document.querySelector(".nav");
 
 toggler.addEventListener("click", () => {
   document.body.classList.toggle("show-nav");
-  toggler.classList.toggle("active"); // Add or remove the "active" class on toggle click
+  toggler.classList.toggle("active"); 
 });
 
 overlay.addEventListener("click", () => {
   document.body.classList.remove("show-nav");
-  toggler.classList.remove("active"); // Remove the "active" class when the overlay is clicked
+  toggler.classList.remove("active"); 
 });
 
 // サイドバーのメニューをクリックしたら非表示

@@ -1,0 +1,67 @@
+<div class="overlay"></div>
+<nav class="nav">
+  <div class="toggle">
+    <span id="deleteconpo" class="toggler"></span>
+  </div>
+  <div class="logo">
+    <a href="#">LOGO</a>
+  </div>
+  <ul>
+    <li class="user_info">
+      <% if current_user %>
+        <div class="user_container">
+          <% if current_user.image.present? %>
+            <img src="<%= current_user.image %>" class="icon_image">
+          <% else %>
+            <p>画像なし</p>
+          <% end %>
+          <p class="user_name"> <%= current_user.name %></p>
+        </div>
+      <% else %>
+        <p class="user_name">未ログインユーザー</p>
+      <% end %>
+    </li>
+    <li><%= link_to "レシピ作成", new_recipe_path, class: "menu_text" %></li>
+    <li><%= link_to 'My Recipes', my_recipes_recipes_path, class: "menu_text" %></li>
+    <%= link_to 'My favorite', favorites_path, class: "menu_text" %></li>
+    <li>
+    <p class="menu_text"> room menber</p>
+      <% if @members.any? %>
+  <ul>
+    <% @members.each do |member| %>
+      <li class="menu_room_text"><%= member.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>メンバーはいません。</p>
+<% end %>
+
+
+
+
+    </li>
+    <li>
+      <%= link_to "新しいルーム作成", new_room_path, class: "menu_text" %>
+    </li>
+    <li>
+      <%= link_to "プロフィール編集", edit_user_registration_path, class: "menu_text" %>
+    </li>
+    <li>
+      <% if user_signed_in? %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "menu_text" %>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path, class: "menu_text" %>
+        <%= link_to "ログイン", new_user_session_path, class: "menu_text" %>
+      <% end %>
+    </li>
+    <li>
+      <% if current_user.try(:admin?) %>
+        <%= link_to "管理者画面", rails_admin_path, class: "menu_text" %>
+        <% else %>
+                <p></p>
+        <% end %>
+            </li>
+          </ul>
+        </nav>
+
+        <%= javascript_pack_tag 'sidebar.js' %>

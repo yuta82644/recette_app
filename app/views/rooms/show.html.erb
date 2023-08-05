@@ -11,6 +11,8 @@
 <% else %>
   <p>メンバーはいません。</p>
 <% end %>
+<%= render 'shared/room-sidebar' %>
+
 
 <h2>投稿されたレシピ検索</h2>
 <%= search_form_for @q, url: room_path(@room), method: :get do |f| %>

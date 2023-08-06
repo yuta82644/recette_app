@@ -1,41 +1,61 @@
+<div class="footer_fixed">
+
+
 <h1>レシピ投稿</h1>
 <%= form_with(model: @recipe, local: true) do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  <div>
-    <%= f.label :short_comment %>
-    <%= f.text_area :short_comment %>
-  </div>
-  <div>
-    <%= f.label :tortal_quantity %>
-    <%= f.text_area :tortal_quantity %>
-  </div>
+<div class="recipe_new wrapper">
+  <div class="recipe_container">
+
+    <div class="image_area">
+      <div class="image_box"></div>
+          <%= f.label :image %>
+          <%= f.file_field :image %>
+    </div>
+
+
+<div class="recipe_text_area">
+    <div class="recipe_title_text">
+      <div class="recipe_title">
+
+        <%= f.text_field :title, class: "title_form", placeholder:"title" %>
+      </div>
+      <div class= "recipe_quantity">
+
+        <%= f.text_field :tortal_quantity, class: "tortal_quantity_form", placeholder:"出来高" %>
+      </div>
+    </div>
+      <div class="short_comment_area">
+       
+        <%= f.text_area :short_comment, class: "short_comment_form", placeholder:"一言コメント"  %>
+      </div>
 
   <h2>材料</h2>
   <div id="cooking_ingredients">
     <%= f.fields_for :cooking_ingredients do |ingredient| %>
-      <div class="ingredient-row">
-        <div>
-          <%= ingredient.label :ingredient_name %>
-          <%= ingredient.text_field :ingredient_name %>
+      <div class="ingredient_container">
+
+        <div class="ingredint_area">
+         
+          <%= ingredient.text_field :ingredient_name, class:"ingredint_form" %>
         </div>
-        <div>
-          <%= ingredient.label :quantity %>
-          <%= ingredient.number_field :quantity %>
+        <div class="quntity_area">
+          
+          <%= ingredient.number_field :quantity, class: "quntity_form" %>
         </div>
-        <div>
-          <%= ingredient.label :unit %>
-          <%= ingredient.text_field :unit %>
+        <div class="unit_area">
+         
+          <%= ingredient.text_field :unit, class: "unit_form" %>
         </div>
         <button type="button" class="btn btn-danger" onclick="removeIngredient(this)">削除</button>
       </div>
     <% end %>
   </div>
   <button type="button" class="btn btn-primary" id="addIngredient">材料を追加</button>
+</div>
+
+
+</div>
+
   <h2>手順</h2>
   <%= f.fields_for :procedures do |step| %>
     <div>
@@ -67,6 +87,7 @@
   <%= f.submit "投稿" %>
 
 <% end %>
+</div>
 
 
 
@@ -78,3 +99,5 @@
 
   <%= f.submit "作成", class: "btn btn-primary" %>
 <% end %>
+
+</div>

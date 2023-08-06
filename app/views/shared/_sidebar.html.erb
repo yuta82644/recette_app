@@ -13,7 +13,7 @@
           <% if current_user.image.present? %>
             <img src="<%= current_user.image %>" class="icon_image">
           <% else %>
-            <p>画像なし</p>
+            <%= image_tag '/images/noimage-1-760x460.png', class: "icon_image" %>
           <% end %>
           <p class="user_name"> <%= current_user.name %></p>
         </div>

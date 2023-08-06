@@ -2,3 +2,96 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.recipe_new {
+  .recipe_container {
+    display: flex;
+  }
+  .recipe_text_area {
+    width: 60%;
+  }
+
+  .recipe_title {
+    width: 300px;
+  }
+  .recipe_quantity {
+    width: 20%;
+  }
+  .image_area {
+    width: 40%;
+  }
+  .image_box {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border: solid 1px #999999;
+  }
+  .recipe_title_text {
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  .title_form {
+    border: none;
+    border-bottom: 1px solid #7a7878;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+  }
+  .tortal_quantity_form {
+    border: none;
+    border-bottom: 1px solid #7a7878;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 40px;
+    font-size: 1.5rem;
+  }
+
+  .short_comment_area {
+    padding: 10px;
+  }
+  .short_comment_form {
+    border: 1px solid #ccc;
+    width: 70%;
+    height: 55px;
+    resize: vertical;
+    font-size: 1.5rem;
+  }
+
+  .ingredient_container {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  .ingredint_area {
+    width: 30%;
+  }
+  .quntity_area {
+    width: 10%;
+  }
+  .unit_area {
+    width: 10%;
+  }
+  .ingredint_form {
+    border: none;
+    border-bottom: 1px solid #7a7878;
+    width: 90%;
+    font-size: 1.2rem;
+  }
+  .quntity_form {
+    border: none;
+    border-bottom: 1px solid #7a7878;
+    width: 90%;
+    font-size: 1.2rem;
+    padding-left: 20px;
+  }
+  .unit_form {
+    border: none;
+    border-bottom: 1px solid #7a7878;
+    font-size: 1.2rem;
+
+    padding-left: 20px;
+    width: 90%;
+  }
+}

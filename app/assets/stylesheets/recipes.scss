@@ -62,6 +62,8 @@
   .ingredient_container {
     display: flex;
     margin-bottom: 40px;
+    margin-left: 40px;
+    width: 100%;
   }
 
   .ingredint_area {
@@ -93,5 +95,31 @@
 
     padding-left: 20px;
     width: 90%;
+  }
+
+  .trash3 {
+    color: #999999;
+    background-color: rgb(249, 248, 248);
+    border: 1px solid #cdcaca ;
+    border-radius: 2px;
+    margin-left: 20px;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  
+  .bar_down_btn {
+    color: #999999;
+    background-color: rgb(249, 248, 248);
+    border: 1px solid #cdcaca ;
+    
+    border-radius: 2px;
+    width: 40px;
+    height: 26px;
+    font-size: 18px;
+    &:hover {
+      opacity: 0.7;
+    }
+    
   }
 }

@@ -20,3 +20,4 @@ for (let i = 0; i < hrefLink.length; i++) {
     toggler.classList.remove("active"); // Remove the "active" class when an <li> element is clicked
   });
 }
+

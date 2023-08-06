@@ -72,8 +72,15 @@ footer {
 }
 
 // 検索
-.btntt {
-  background-color: black;
-  color: white
 
+
+.page {
+  display: flex;
+  justify-content: flex-end;
+
+  .page_name {
+    margin-right: 40px;
+    color: #5a5454;
+    font-weight: 300;
+  }
 }

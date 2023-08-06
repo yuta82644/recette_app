@@ -1,11 +1,13 @@
 <!-- room/show.html.erb -->
-<h1><%= @room.name %> のルームページ</h1>
+<div class="page wrapper">
+<h1 class= "page_name" ><%= @room.name %> のルームページ</h1>
+</div>
 
 
 <%= render 'shared/room-sidebar' %>
 
 
-<h2>投稿されたレシピ検索</h2>
+
 <%= search_form_for @q, url: room_path(@room), method: :get do |f| %>
 <div class="search-container wrapper">
   <div class="search col-4">
@@ -30,38 +32,40 @@
 </div>
 <% end %>
 <!-- ルームに投稿されたレシピを表示 -->
-<h2>投稿されたレシピ一覧</h2>
+
 <% if @recipes.any? %>
-  <ul>
+  <div class="recipe-container wrapper">
     <% @recipes.each do |recipe| %>
       <% if @room.users.include?(recipe.user) && !recipe.public? %>
-        <li>
-          <h3><%= recipe.title %></h3>
-          <p><%= recipe.short_comment %></p>
-
-          <h4>材料</h4>
-          <% recipe.cooking_ingredients.each do |ingredient| %>
-            <div>
-              <%= ingredient.ingredient_name %> - <%= ingredient.quantity %> <%= ingredient.unit %>
-            </div>
+        <div class="recipe-card">
+          <% if recipe.image.present? %>
+            <%= image_tag recipe.image.url, class: "recipe-img" %>
+          <% else %>
+            <%= image_tag '/images/noimage-1-760x460.png', class: "recipe-img" %>
           <% end %>
-
-          <h4>手順</h4>
-          <% recipe.procedures.each do |step| %>
-            <div>
-              <%= step.procedure_comment %>
-            </div>
-          <% end %>
-
-          <%= link_to "詳細を見る", recipe_path(recipe) %>
-          <%= link_to "編集", edit_recipe_path(recipe) %>
-        </li>
+          <div class="recipe_text">
+            <h5 class="recipe-title"><%= recipe.title %></h5>
+            <p class="recipe-comment"><%= recipe.short_comment %></p>
+          </div>
+          <div class="recipe-link-container">
+            <%= link_to recipe_path(recipe), class: "recipe-link" do %>
+              <i class="bi bi-arrow-right-square"></i>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     <% end %>
-  </ul>
+  </div>
 <% else %>
   <p>まだレシピが投稿されていません。</p>
 <% end %>
+
+
+
+
+
+
+
 
 
 

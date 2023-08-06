@@ -1,35 +1,60 @@
-<h1>お気に入り一覧</h1>
+<%= render 'shared/sidebar'%>
+
+<div class="page wrapper">
+<h1 class="page_name">My favorites</h1>
+</div>
 
 <%= search_form_for @q, url: favorites_path, method: :get do |f| %>
-  <div class="field">
-    <%= f.label :recipe_title_cont, 'タイトル検索' %>
-    <%= f.search_field :recipe_title_cont %>
-  </div>
-  <div class="field">
-    <%= f.label :recipe_categories_name_eq, 'カテゴリー検索' %>
-    <%= f.collection_select :recipe_categories_name_eq, Category.all, :name, :name, include_blank: true %>
-  </div>
-  <%= f.submit '検索' %>
-<% end %>
+<div class="search-container wrapper">
+  <div class="search col-4">
+  <div class="input-group">
+    <%= f.search_field :recipe_title_cont, class: "form-control", placeholder: "タイトル検索" %>
+<div class="input-group-append">
+        <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
+          <i class="bi bi-search"></i>
+        <% end %>
+      </div>
+    </div>
+
+
+
+  <div class="input-group">
+    
+    <%= f.collection_select :recipe_categories_name_eq, Category.all, :name, :name,  {prompt: "カテゴリー検索 ↓" }, { class: "form-control dorop"} %>
   
-<div class="recipe-container">
+
+<div class="input-group-append">
+      <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
+        <i class="bi bi-search"></i>
+      <% end %>
+  </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div class="recipe-container wrapper">
   <% @favorites.each do |favorite| %>
     <% recipe = favorite.recipe %>
-    <div class="recipe-card">
-      <div class="recipe-info">
+     <div class="recipe-card">
+      <% if recipe.image.present? %>
+        <%= image_tag recipe.image.url, class: "recipe-img" %>
+      <% else %>
+      <%= image_tag '/images/noimage-1-760x460.png', class: "recipe-img" %>
+
+        
+      <% end %>
+      <div class="recipe_text">
         <h5 class="recipe-title"><%= recipe.title %></h5>
         <p class="recipe-comment"><%= recipe.short_comment %></p>
       </div>
       
-      <% if recipe.image.present? %>
-        <%= image_tag recipe.image.url, class: "recipe-img" %>
-      <% else %>
-        <p>noimage</p>
-      <% end %>
      
       <div class="recipe-link-container">
-        <%= link_to "詳細を見る", recipe_path(recipe), class: "recipe-link" %>
-      </div>
+  <%= link_to recipe_path(recipe), class: "recipe-link" do %>
+    <i class="bi bi-arrow-right-square"></i>
+  <% end %>
+</div>
     </div>
   <% end %>
 </div>

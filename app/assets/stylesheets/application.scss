@@ -19,12 +19,15 @@
 //  共通
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
   color: rgb(56, 54, 50);
   background-color: #fafbfb;
   font-family: "Noto Sans JP", sans-serif;
+
+  
 }
 
 a {
@@ -55,9 +58,11 @@ a {
 footer {
   background-color: rgba(145, 145, 142, 0.364);
   text-align: center;
-  margin-top: 60px;
-  padding: 20px 0;
   
+  padding: 20px 0;
+  margin-top: auto;
+  
+ 
 
   p {
     color: rgb(47, 48, 48);
@@ -66,9 +71,9 @@ footer {
 }
 
 .footer_fixed {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+   display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 // 検索

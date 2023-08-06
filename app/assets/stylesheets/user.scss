@@ -53,7 +53,7 @@
 //   background-size: cover;
 // }
 
-.form-box input {
+.form-box input:not([type="checkbox"]) {
   width: 100%;
   padding: 10px;
   text-align: center;
@@ -147,6 +147,7 @@ label {
 }
 
 .back_button {
+  
   text-decoration: none;
   padding: 10px;
   text-align: center;
@@ -156,5 +157,10 @@ label {
   transition: 0.2s ease-in-out;
   color: #797777;
   margin-left: 100px;
-  
+}
+
+
+.login_link {
+  color: #797777;
+  text-decoration: none;
 }

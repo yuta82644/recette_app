@@ -1,4 +1,14 @@
-<h2><%= t('.title', resource: resource_name.to_s.humanize) %></h2>
+
+<%= render 'shared/sidebar' %>
+
+<div class="container">
+  <div class="login-container">
+    <div class="output"></div>
+    <div class="avatar"></div>
+    <div class="form-box">
+
+
+<h2 class="login_title"><%= t('.title', resource: resource_name.to_s.humanize) %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -9,10 +19,6 @@
     <%= f.text_field :name, autocomplete: "name" %>
   </div>
 
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image, accept: "image/*" %>
-  </div>
   
   <div class="field">
     <%= f.label :email %><br />
@@ -42,14 +48,21 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
 
   <div class="actions">
-    <%= f.submit t('.update') %>
+    <%= f.submit t('.update'), class:"login_button" %>
   </div>
 <% end %>
 
-<h3><%= t('.cancel_my_account') %></h3>
+ </div>
+  </div>
+<h3 class="delete_text"><%= t('.cancel_my_account') %></h3>
 
-<div><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete %></div>
+<div class="delete_text"><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete ,class: "delete_button"%></div>
 
-<%= link_to t('devise.shared.links.back'), :back %>
+<%= link_to t('devise.shared.links.back'), :back, class: "back_button" %>
+</div>

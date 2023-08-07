@@ -5,6 +5,7 @@
 .recipe_new {
   .recipe_container {
     display: flex;
+    margin-bottom: 50px;
   }
   .recipe_text_area {
     width: 60%;
@@ -100,19 +101,19 @@
   .trash3 {
     color: #999999;
     background-color: rgb(249, 248, 248);
-    border: 1px solid #cdcaca ;
+    border: 1px solid #cdcaca;
     border-radius: 2px;
     margin-left: 20px;
     &:hover {
       opacity: 0.7;
     }
   }
-  
+
   .bar_down_btn {
     color: #999999;
     background-color: rgb(249, 248, 248);
-    border: 1px solid #cdcaca ;
-    
+    border: 1px solid #cdcaca;
+
     border-radius: 2px;
     width: 40px;
     height: 26px;
@@ -120,6 +121,24 @@
     &:hover {
       opacity: 0.7;
     }
-    
+  }
+
+  h3 {
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: #585757;
+  }
+
+  .procedures_container {
+    width: 100%;
+   margin-bottom: 60px;
+
+    .procedures_form {
+      border: 1px solid #ccc;
+      width: 80%;
+      height: 250px;
+      resize: vertical;
+      font-size: 1.4rem;
+    }
   }
 }

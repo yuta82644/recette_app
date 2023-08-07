@@ -1,7 +1,8 @@
 <div class="footer_fixed">
 
-
-<h1>レシピ投稿</h1>
+<div class="page wrapper">
+<h1 class="page_name">レシピ投稿</h1>
+</div>
 <%= form_with(model: @recipe, local: true) do |f| %>
 <div class="recipe_new wrapper">
   <div class="recipe_container">
@@ -29,7 +30,7 @@
         <%= f.text_area :short_comment, class: "short_comment_form", placeholder:"一言コメント"  %>
       </div>
 
- <h2>材料</h2>
+ <h3>材料</h3>
 <div id="cooking_ingredients">
   <%= f.fields_for :cooking_ingredients do |ingredient| %>
     <div class="ingredient_container">
@@ -56,14 +57,16 @@
 
 </div>
 
-  <h2>手順</h2>
+  <h3>作り方</h3>
   <%= f.fields_for :procedures do |step| %>
-    <div>
-      <%= step.label :procedure_comment %>
-      <%= step.text_area :procedure_comment %>
+<div class="procedures_container">
+    <div class="pprocedures_area">
+    
+      <%= step.text_area :procedure_comment, class: "procedures_form" %>
     </div>
   <% end %>
 
+</div>
 
   <div>
     <%= f.label :public %>
@@ -91,84 +94,13 @@
 
 
 
-<%= form_with(model: Category.new, url: categories_path, local: true) do |f| %>
-  <div class="form-group">
-    <%= f.label :name, "新しいカテゴリー名" %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-
-  <%= f.submit "作成", class: "btn btn-primary" %>
-<% end %>
 
 </div>
+
+<%= link_to "新しいカテゴリーを作成", new_category_path %>
 
 <%= javascript_pack_tag 'recipe_field.js' %>
 
 
 
-  <%# // JavaScript for adding and removing ingredient fields
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const addIngredientButton = document.getElementById("addIngredient");
-  const ingredientsContainer = document.getElementById("cooking_ingredients");
-
-  // Function to create a new ingredient field
-  function createIngredientField() {
-      const ingredientContainer = document.createElement("div");
-  ingredientContainer.classList.add("ingredient_container");
-
-  const ingredientArea = document.createElement("div");
-  ingredientArea.classList.add("ingredint_area");
-  const ingredientInput = document.createElement("input");
-  ingredientInput.type = "text";
-  ingredientInput.name = "recipe[cooking_ingredients_attributes][][ingredient_name]";
-  ingredientInput.classList.add("ingredint_form");
-  ingredientArea.appendChild(ingredientInput);
-
-  const quantityArea = document.createElement("div");
-  quantityArea.classList.add("quntity_area");
-  const quantityInput = document.createElement("input");
-  quantityInput.type = "number";
-  quantityInput.name = "recipe[cooking_ingredients_attributes][][quantity]";
-  quantityInput.classList.add("quntity_form");
-  quantityArea.appendChild(quantityInput);
-
-  const unitArea = document.createElement("div");
-  unitArea.classList.add("unit_area");
-  const unitInput = document.createElement("input");
-  unitInput.type = "text";
-  unitInput.name = "recipe[cooking_ingredients_attributes][][unit]";
-  unitInput.classList.add("unit_form");
-  unitArea.appendChild(unitInput);
-
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("trash3");
-  deleteButton.type = "button";
-  deleteButton.innerHTML = '<i class="bi bi-trash3"></i>';
-  deleteButton.onclick = function() {
-    ingredientsContainer.removeChild(ingredientContainer);
-      };
-
-  ingredientContainer.appendChild(ingredientArea);
-  ingredientContainer.appendChild(quantityArea);
-  ingredientContainer.appendChild(unitArea);
-  ingredientContainer.appendChild(deleteButton);
-
-  ingredientsContainer.appendChild(ingredientContainer);
-    }
-
-  // Add event listener to the "Add Ingredient" button
-  addIngredientButton.addEventListener("click", function() {
-    createIngredientField();
-    });
-
-  // Function to remove an ingredient field
-  function removeIngredient(button) {
-      const ingredientContainer = button.closest(".ingredient_container");
-  if (ingredientContainer) {
-    ingredientsContainer.removeChild(ingredientContainer);
-      }
-    }
-  });
-  alert('JavaScriptのアラート');
-  </script>  %>
+ 

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :room_comments
   after_create :create_default_room
-
+  
   private
 
   def create_default_room

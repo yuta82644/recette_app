@@ -19,12 +19,24 @@
   }
   .image_area {
     width: 40%;
+    .bi {
+      font-size: 60px;
+      color: #585757;
+    }
+    .image_upload {
+      margin-top: 20px;
+    }
   }
   .image_box {
-    width: 100px;
-    height: 100px;
-    margin: 5px;
-    border: solid 1px #999999;
+    width: 400px;
+    height: 350px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #ccc;
+
+    object-fit: cover;
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
   }
   .recipe_title_text {
     display: flex;
@@ -131,7 +143,7 @@
 
   .procedures_container {
     width: 100%;
-   margin-bottom: 60px;
+    margin-bottom: 60px;
 
     .procedures_form {
       border: 1px solid #ccc;
@@ -140,5 +152,101 @@
       resize: vertical;
       font-size: 1.4rem;
     }
+  }
+
+  .sab_text {
+    margin-bottom: 30px;
+  }
+
+  .category_area {
+    margin-left: 30px;
+    margin-bottom: 40px;
+    .form-control {
+      width: 200px;
+      margin-right: 40px;
+    }
+  }
+
+  h5 {
+    color: #7a7878;
+    font-size: 1.2rem;
+    margin-left: 100px;
+  }
+  .post_area {
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+    .public_form {
+      .checkbox {
+        width: 30px;
+        height: 30px;
+        margin-left: 165px;
+        background-color: #3e3b3b;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        margin-right: 300px;
+
+        &:checked {
+          background-color: #949597;
+          border-color: #d3d5d6;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .room_select {
+    width: 200px;
+    height: 40px;
+  }
+
+  .post-btn {
+    margin-bottom: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 60%;
+    max-width: 200px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+
+    &:before {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.1);
+      transform: translateX(-50%);
+    }
+
+    &:after {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: #000;
+      transform: scale(0, 1);
+      transform-origin: left top;
+      transition: transform 0.3s;
+    }
+
+    &:hover {
+      opacity: 0.7;
+
+      &:after {
+        transform: scale(1, 1);
+      }
+    }
+  }
+  .btn {
+    color: #868484;
+    font-size: 1.5rem;
   }
 }

@@ -1,18 +1,17 @@
 <div class="footer_fixed">
 
 <div class="page wrapper">
-<h1 class="page_name">レシピ投稿</h1>
+<h1 class="page_name">レシピ作成</h1>
 </div>
 <%= form_with(model: @recipe, local: true) do |f| %>
 <div class="recipe_new wrapper">
   <div class="recipe_container">
 
-    <div class="image_area">
-      <div class="image_box"></div>
-          <%= f.label :image %>
-          <%= f.file_field :image %>
-    </div>
-
+     <div class="image_area">
+    <div class="image_box" id="image_preview"></div>
+    
+    <%= f.file_field :image, class: "image_upload", accept: "image/*" %>
+  </div>
 
 <div class="recipe_text_area">
     <div class="recipe_title_text">
@@ -68,26 +67,37 @@
 
 </div>
 
-  <div>
-    <%= f.label :public %>
-    <%= f.check_box :public %> <!-- 一般公開のチェックボックスを追加 -->
+ <h3 class="sab_text">カテゴリー選択</h3>
+<div class="category_area">
+  <%= f.collection_select :category_ids, Category.all, :id, :name, {prompt: '選択↓'}, class: "form-control category_form" %>
+ 
+    
+  
+</div>
+
+<h3 class="sab_text">投稿先選択</h3>
+   <h5>一般公開はチェックしてください</h5><h5>ルーム公開の場合はチェックを外してください</h5>
+<div class="post_area">
+
+  <div class="public_form">
+  <%= f.check_box :public, class: "checkbox" %>
+
   </div>
-  <div>
-  <%= f.label :room_id %>
-  <% if @user_rooms.present? %>
-    <%= f.select :room_id, options_for_select(@user_rooms.pluck(:name, :id)), {}, class: "form-control" %>
-  <% else %>
-    <%= f.select :room_id, options_for_select([["一般公開", nil]]), {}, class: "form-control" %>
-  <% end %>
+
+  
+  <div class="room_form"></div>
+  
+   <%= f.select :room_id, options_for_select(@user_rooms.pluck(:name, :id), @user_rooms.first.id), { prompt: "" }, class: "form-control room_select" %>
+
+  </div>
+
+
+
+
+<div class="post-btn">
+
+  <%= f.submit "POST", class:"btn" %>
 </div>
-<div>
-  <%= f.label :category_ids, "Categories" %>
-  <%= f.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true } %>
-</div>
-
-
-
-  <%= f.submit "投稿" %>
 
 <% end %>
 </div>
@@ -95,10 +105,12 @@
 
 
 
+
+
+
+
+
 </div>
-
-<%= link_to "新しいカテゴリーを作成", new_category_path %>
-
 <%= javascript_pack_tag 'recipe_field.js' %>
 
 

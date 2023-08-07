@@ -1,0 +1,26 @@
+.recipe_show {
+  .recipe_container {
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 40px;
+  }
+
+  .image_area {
+    width: 40px;
+
+    .image_box {
+      width: 400px;
+      height: 350px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid #ccc;
+      object-fit: cover;
+      box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+
+    }
+  }
+  .recipe_text_area {
+    width: 60%;
+  }
+}

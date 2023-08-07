@@ -1,49 +1,58 @@
-<h1>show</h1>
+<h1>レシピ詳細</h1>
 
+<div class="footer_fixed">
+  <div class="page wrapper">
+    <h1 class="page_name">レシピ詳細</h1>
+  </div>
+  <div class="recipe_show wrapper">
+    <div class="recipe_container">
+      <div class="image_area">
+        <% if @recipe.image.present? %>
+          <div class="image_box">
+            <%= image_tag @recipe.image.url, class: "recipe-img" %>
+          </div>
+        <% else %>
+          <%= image_tag "default_recipe_image.jpg", class: "recipe-img" %>
+        <% end %>
+      </div>
+      <div class="recipe_text_area">
+        <h1><%= @recipe.title %></h1>
+        <p><%= @recipe.short_comment %></p>
 
+        <h2>材料</h2>
+        <% @recipe.cooking_ingredients.each do |ingredient| %>
+          <div>
+            <%= ingredient.ingredient_name %> - <%= ingredient.quantity %> <%= ingredient.unit %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
+    <h2>手順</h2>
+    <% @recipe.procedures.each do |step| %>
+      <div>
+        <%= step.procedure_comment %>
+      </div>
+    <% end %>
 
-<h1><%= @recipe.title %></h1>
-<p><%= @recipe.short_comment %></p>
+    <!-- コメント一覧を表示するための部分 -->
+    <p>コメント一覧</p>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, recipe: @recipe } %>
+    </div>
 
-<% if @recipe.image.present? %>
-        <%= image_tag @recipe.image.url, class: "recipe-img" %>
+    <!-- コメント入力欄を表示するための部分 -->
+    <%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
+
+    <%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
+
+    <%# <% unless @recipe.user_id == current_user.id %>
+      <% if @favorite.present? %>
+        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
       <% else %>
-        <p>noimage</p>
+        <%= link_to 'お気に入りする', favorites_path(recipe: @recipe.id), method: :post, class: 'btn btn-primary' %>
       <% end %>
-
-
-<h2>材料</h2>
-<% @recipe.cooking_ingredients.each do |ingredient| %>
-  <div>
-    <%= ingredient.ingredient_name %> - <%= ingredient.quantity %> <%= ingredient.unit %>
+    <%# <% end %>
+    <%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
   </div>
-<% end %>
-
-<h2>手順</h2>
-<% @recipe.procedures.each do |step| %>
-  <div>
-    <%= step.procedure_comment %>
-  </div>
-<% end %>
-
-
-<!-- コメント一覧を表示するための部分 -->
-<p>コメント一覧</p>
-<div id="comments_area">
-  <%= render partial: 'comments/index', locals: { comments: @comments, recipe: @recipe } %>
 </div>
-
-<!-- コメント入力欄を表示するための部分 -->
-<%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
-
-<%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
-
-<%# <% unless @recipe.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(recipe: @recipe.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<%# <% end %>
-<%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>

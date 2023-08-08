@@ -10,10 +10,10 @@
   <div class="unit_area">
     <%= f.text_field :unit, class: "unit_form" %>
   </div>
-  
-<%= link_to_remove_association '削除', f, class: 'bg-orange btn-type-s' %>
-<button class="trash3" type="button">
-  <i class="bi bi-trash3"></i>
-</button>
+  <button class="trash3" type="button">
+    <i class="bi bi-trash3"></i>
+  </button>
+
 </div>
 
+<%= javascript_pack_tag 'recipe_field.js'%>

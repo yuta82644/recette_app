@@ -80,7 +80,6 @@
     width: 100%;
     color: #c6c6c6;
     text-decoration: none;
-
   }
 
   .ingredint_area {
@@ -163,11 +162,14 @@
   }
 
   .category_area {
-    margin-left: 30px;
-    margin-bottom: 40px;
+    margin-left: 60px;
+    margin-bottom: 60px;
     .form-control {
-      width: 200px;
-      margin-right: 40px;
+      width: 220px;
+      margin-right: 50px;
+      font-size: 1.3rem;
+      height: 60px;
+      color: #5b5a5a;
     }
   }
 

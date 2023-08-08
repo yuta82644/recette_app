@@ -33,6 +33,7 @@ end
 
       if @recipe.save
         redirect_to recipes_path(@recipe), notice: "レシピを投稿しました！"
+         puts params[:recipe][:category_ids]
       else
 
         render :new

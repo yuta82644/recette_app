@@ -1,14 +1,18 @@
 .recipe_show {
   .recipe_container {
-    display: flex;
-    margin-bottom: 50px;
-    margin-top: 40px;
-   
-  }
-
-  .image_area {
-    width: 40px;
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 50px;
+    .category_text {
+      margin-left: 40px;
+      margin-top: 20px;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #a4a3a3;
+      display: inline;
+      padding-bottom: 2px;
+      color: #787777;
+    }
     .image_box {
       width: 400px;
       height: 350px;
@@ -18,10 +22,101 @@
       border: 1px solid #ccc;
       object-fit: cover;
       box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+    .short_comment {
+      font-size: 1.8rem;
+      margin-left: 40px;
+      margin-top: 20px;
+      color: #787777;
+    }
 
+    .recipe_text_area {
+      .recipe_title {
+        display: flex;
+
+        align-items: flex-end;
+
+        h3 {
+          font-size: 3rem;
+          margin-right: 20px;
+          color: #787777;
+        }
+        // p {
+        //   font-size: 1.4rem;
+        // }
+      }
+      p {
+        font-size: 1.4rem;
+        margin-left: 20px;
+        margin-top: 15px;
+      }
+    }
+    .ingredient_area {
+      width: 75%;
+      .ingredient_text {
+        font-size: 1.2rem;
+        color: #787777;
+        font-size: 1.2rem;
+        color: #787777;
+        margin-left: 10px;
+        dl {
+          display: flex;
+          flex-wrap: wrap;
+          border-bottom: 0.3px solid #d2d1d1;
+        }
+        dt {
+          width: 80%;
+          padding-top: 10px;
+          padding-left: 20px;
+        }
+        dd {
+          width: 15%;
+          padding-top: 10px;
+        }
+      }
     }
   }
-  .recipe_text_area {
-    width: 60%;
+  h4 {
+    color: #787777;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  .procedure_container {
+    // text-align: center;
+    margin-bottom: 60px;
+
+  }
+  .procedure_area {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 80%;
+    height: auto;
+    text-align: left;
+    
+
+    h2 {
+      color: #787777;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      font-size: 2rem;
+    }
+
+    .procedure_text {
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+      font-size: 1.5rem;
+      white-space: pre-wrap;
+      margin-left: 60px;
+      color: #5a5959;
+      border-left: 0.3px solid #c3c1c1;
+      padding-left: 40px;
+    }
+  }
+
+  .btn {
+    margin-left: 70%;
   }
 }

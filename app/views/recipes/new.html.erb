@@ -62,8 +62,10 @@
 
  <h3 class="sab_text">カテゴリー選択</h3>
 <div class="category_area">
-  <%= f.collection_select :category_ids, Category.all, :id, :name, {prompt: '選択↓'}, class: "form-control category_form" %>
- 
+<%= f.label :category_ids, "Categories" %>
+ <%= f.collection_select :category_ids, Category.all, :id, :name, {}, { prompt: '選択↓', class: "form-control category_form", multiple: true } %>
+
+
     
   
 </div>

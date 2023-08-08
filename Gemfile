@@ -66,3 +66,5 @@ gem 'ransack'
 gem 'rails_admin'
 gem 'cancancan'
 gem 'simple_calendar'
+gem 'cocoon'
+gem "jquery-rails"

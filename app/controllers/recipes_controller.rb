@@ -31,14 +31,18 @@ end
 
       @recipe.user = current_user
 
-      if @recipe.save
-        redirect_to recipes_path(@recipe), notice: "レシピを投稿しました！"
-      else
-
-        render :new
-      end
+       if @recipe.save
+    respond_to do |format|
+      format.html { redirect_to recipes_path(@recipe), notice: "レシピを投稿しました！" }
+      format.json { render json: { message: "レシピを投稿しました！", recipe: @recipe } }
     end
-  
+  else
+    respond_to do |format|
+      format.html { render :new }
+      format.json { render json: { errors: @recipe.errors.full_messages }, status: :unprocessable_entity }
+    end
+    end
+  end
 
 
 

@@ -1,4 +1,5 @@
 <%= form_with(model: [recipe, comment], local: false) do |form| %>
+<div class="comment_input">
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> があります:</h2>
@@ -11,12 +12,13 @@
   <% end %>
 
     <div class="field">
-    <%= form.label :content %>
+    
     <%= form.text_area :content %>
   </div>
 
   <div class="actions">
-    <%= form.submit "コメントを投稿する" %>
+    <%= form.submit class: "post-btn" %>
   </div>
 
 <% end %>
+</div>

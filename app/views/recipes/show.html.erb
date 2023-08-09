@@ -60,24 +60,31 @@
     </div>
     <%# <% unless @recipe.user_id == current_user.id %>
       <% if @favorite.present? %>
-        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+    
+        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn  favorite_btn' %>
+     
       <% else %>
-        <%= link_to 'お気に入りする', favorites_path(recipe: @recipe.id), method: :post, class: 'btn btn-primary' %>
+        <%= link_to 'お気に入りする', favorites_path(recipe: @recipe.id), method: :post, class: 'btn favorite_btn' %>
       <% end %>
     <%# <% end %>
     </div>
 
-    <!-- コメント一覧を表示するための部分 -->
-    <p>コメント一覧</p>
-    <div id="comments_area">
-      <%= render partial: 'comments/index', locals: { comments: @comments, recipe: @recipe } %>
-    </div>
-
+<div class="comment_container">
     <!-- コメント入力欄を表示するための部分 -->
+    
     <%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
+   
 
-    <%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
+          <div class="comment">
+              <!-- コメント一覧を表示するための部分 -->
+              <div id="comments_area">
+                <%= render partial: 'comments/index', locals: { comments: @comments, recipe: @recipe } %>
+              </div>
+          </div>
 
-    <%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
+
+</div>
+    
+              <%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
   </div>
 </div>

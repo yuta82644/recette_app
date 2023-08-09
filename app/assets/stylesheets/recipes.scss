@@ -206,6 +206,7 @@
     height: 40px;
   }
 
+  font-weight: 600;
   .post-btn {
     margin-bottom: 100px;
     position: relative;
@@ -217,7 +218,6 @@
     padding: 10px 25px;
     color: #313131;
     transition: 0.3s ease-in-out;
-    font-weight: 600;
 
     &:before {
       position: absolute;

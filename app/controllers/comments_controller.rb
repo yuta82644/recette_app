@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+          @comments = @recipe.comments.order(created_at: :desc) 
         format.js {render :index}
 
       else

@@ -1,0 +1,77 @@
+/* app/assets/stylesheets/custom_calendar.scss */
+
+/* カレンダー全体の背景色を変更 */
+.simple-calendar {
+  background-color: #fffefe;
+  color: #007bff;
+  
+  table {
+    border: none;
+   th {
+    color: #626161;
+    font-weight: 200;
+   }
+  }
+  .prev-month {
+    background-color: #ffffff;
+  }
+  .next-month {
+    background-color: #ffffff;
+  }
+  .future {
+    background-color: #ffffff;
+  }
+  th {
+    border-left: none;
+    border-right: none;
+    color: #626161;
+  }
+  /* 今日の日付の背景色を変更 */
+  .today {
+    background: #eaeaea;
+  }
+  
+  .table {
+    border-collapse: collapse;
+  }
+
+  /* カレンダーのヘッダー部分の背景色とテキスト色を変更 */
+  .calendar-heading {
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+
+    /* 前後月へのナビゲーションリンクのスタイルを変更 */
+    nav a {
+      color: #a9abac;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+  }
+
+  /* カレンダーセルのスタイルを変更 */
+  td {
+    background-color: rgb(210, 210, 210);
+
+    padding: 5px;
+    border: none;
+    border-bottom: 0.3px solid #e2e2e2;
+    /* カレンダーセル内の日付のスタイルを変更 */
+    a {
+      color: #626161;
+      text-decoration: none;
+    }
+
+    /* カレンダーセル内のイベントのスタイルを変更 */
+    .event {
+      background-color: #007bff;
+      color: white;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    /* 前月・次月のスタイルを変更 */
+
+    
+    /* 未来の日付のスタイルを変更 */
+  }
+}

@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
 .room_show {
   .recipe-container {
     overflow: scroll;
@@ -12,15 +11,58 @@
   }
   .comment_container {
     margin-top: 80px;
-   }
-   h3 {
+  }
+  h3 {
     color: rgb(166, 164, 164);
     font-size: 3rem;
     margin-top: 100px;
-   }
+  }
 
-   .task_container {
+  .task_container {
     display: grid;
-    grid-template-columns: 200px 200px;
-   }
+    grid-template-columns: 60% 30%;
+    gap: 40px;
+    margin-bottom: 200px;
+    margin-top: 170px;
+
+    .title_form {
+      width: 200px;
+      border: none;
+      border-bottom: 1px solid rgb(156, 155, 155);
+      margin: 40px 40px;
+      font-size: 1.4rem;
+    }
+
+    .content_form {
+      width: 250px;
+      border: 0.3px solid rgb(156, 155, 155);
+      margin: 40px;
+      margin-top: 0;
+      height: 150px;
+      font-size: 1.4rem;
+      letter-spacing: 0.05;
+    }
+    .start_time {
+      margin-left: 40px;
+    }
+    .btn {
+      margin-left: 30px;
+      margin-top: 30px;
+
+      input {
+        width: 100px;
+        color: #848484;
+        border: none;
+        border-bottom: 0.3px solid #6b6a6a;
+        background-color: #ffffff;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+    h2 {
+      color: rgb(166, 164, 164);
+      margin-left: 30px;
+    }
+  }
 }

@@ -90,7 +90,7 @@
 
 <!-- カレンダー表示 -->
 <div class="calendar_area">
-<%= month_calendar events: @tasks, start_date: Date.today, click_day: room_tasks_path(@room, date: '%{day}') do |date, tasks| %>
+<%= month_calendar events: @tasks, start_date: Date.today, click_day: room_tasks_path(@room, date: '%{day}'),locale: :ja do |date, tasks| %>
   <%= date.day %>
   <% tasks.each do |task| %>
     <p><%= link_to task.title, room_task_path(@room, task) %></p>
@@ -105,21 +105,22 @@
 <h2>タスクの投稿</h2>
 <%= form_with(model: [@room, Task.new]) do |form| %>
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    
+    <%= form.text_field :title, class:"title_form", placeholder:"title"%>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+   
+    <%= form.text_area :content, class:"content_form", placeholder:"content" %>
   </div>
 
   <div class="field">
-    <%= form.label :start_time, '開始日時' %>
-    <%= form.datetime_local_field :start_time %>
+   
+    <%= form.datetime_local_field :start_time,  class: "start_time" %>
   </div>
-
-  <%= form.submit '投稿' %>
+<div class="btn">
+  <%= form.submit 'create task',class: "task-post" %>
+</div>
 </div>
 </div>
 <% end %>

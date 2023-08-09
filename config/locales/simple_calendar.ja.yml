@@ -1,0 +1,13 @@
+ja:
+  simple_calendar:
+    month_headers:
+      previous: 前の月
+      next: 次の月
+    week_headers:
+      sun: 日
+      mon: 月
+      tue: 火
+      wed: 水
+      thu: 木
+      fri: 金
+      sat: 土

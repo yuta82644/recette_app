@@ -7,6 +7,7 @@ class RoomCommentsController < ApplicationController
 
     respond_to do |format|
       if @room_comment.save
+        
         format.js { render :index }
         @comments = @room.room_comments.reload
       else

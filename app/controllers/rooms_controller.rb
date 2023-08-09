@@ -19,7 +19,7 @@ class RoomsController < ApplicationController
     @recipes = @room.recipes
 
 # コメント機能
-  @comments = @room.room_comments
+  @comments = @room.room_comments.order(created_at: :desc)
   @comment = @room.room_comments.build
 
   # 検索

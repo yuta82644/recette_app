@@ -1,6 +1,6 @@
 
 <%= render 'shared/sidebar' %>
-
+<div class="footer_fixed">
 <div class="container">
   <div class="login-container">
     <div class="output"></div>
@@ -65,4 +65,6 @@
 <div class="delete_text"><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete ,class: "delete_button"%></div>
 
 <%= link_to t('devise.shared.links.back'), :back, class: "back_button" %>
+</div>
+
 </div>

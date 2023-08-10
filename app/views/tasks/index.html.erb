@@ -1,6 +1,8 @@
 <h1>タスク一覧</h1>
+<%= render 'shared/room-sidebar' %>
+<div class="footer_fixed">
 
-<ul>
+<ul class= "wrapper">
   <% @tasks.each do |task| %>
     <li>
       <h3><%= task.title %></h3>
@@ -10,3 +12,4 @@
   <% end %>
 </ul>
 <%= link_to 'room', room_path(@room) %>
+</div>

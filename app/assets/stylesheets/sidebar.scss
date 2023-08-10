@@ -143,7 +143,13 @@ nav.nav ul {
   font-family: "Noto Sans JP", sans-serif;
   padding-left: 20px;
 }
-
+.scroll {
+  overflow: scroll;
+  height: 120px;
+}
+.space {
+  height: 140px;
+}
 .menu_text {
   display: block;
   list-style: none;

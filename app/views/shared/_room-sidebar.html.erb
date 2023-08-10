@@ -22,6 +22,7 @@
       <% end %>
     </li>
     <li><%= link_to "レシピ作成", new_recipe_path, class: "menu_text" %></li>
+    <li><%= link_to "カテゴリー管理", new_category_path, class: "menu_text" %></li>
     <li><%= link_to 'My Recipes', my_recipes_recipes_path, class: "menu_text" %></li>
     <%= link_to 'My favorite', favorites_path, class: "menu_text" %></li>
     
@@ -29,6 +30,7 @@
       <%= link_to "新しいルーム作成", new_room_path, class: "menu_text" %>
       <%= link_to "ルーム編集", edit_room_path, class: "menu_text" %>
     </li>
+  <li class="space"></li>
   
     <li>
       <% if user_signed_in? %>

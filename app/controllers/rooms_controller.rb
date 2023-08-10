@@ -34,7 +34,7 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-
+    @room.owner = current_user
     if @room.save
       redirect_to room_path(@room), notice: "Room was successfully created."
     else
@@ -64,6 +64,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:name, :introduction)
+    params.require(:room).permit(:name, :introduction,)
   end
 end

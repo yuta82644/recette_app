@@ -14,7 +14,7 @@ class User < ApplicationRecord
   private
 
   def create_default_room
-    default_room = Room.create(name: "デフォルトのルーム", introduction: "デフォルトのルーム")
+    default_room = Room.create(name: "デフォルトのルーム", introduction: "デフォルトのルーム", owner: self)
     self.room_assigns.create(room: default_room)
   end
 end

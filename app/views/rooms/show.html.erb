@@ -33,35 +33,54 @@
 </div>
 <% end %>
 <!-- ルームに投稿されたレシピを表示 -->
-
 <% if @recipes.any? %>
-  <div class="recipe-container wrapper">
-    <% @recipes.each do |recipe| %>
-      <% if @room.users.include?(recipe.user) && !recipe.public? %>
-        <div class="recipe-card">
-          <% if recipe.image.present? %>
-            <%= image_tag recipe.image.url, class: "recipe-img" %>
-          <% else %>
-            <%= image_tag '/images/noimage-1-760x460.png', class: "recipe-img" %>
+<div class="recipe-container wrapper">
+  <% @recipes.each do |recipe| %>
+   <% if @room.users.include?(recipe.user) && !recipe.public? %>
+    <div class="recipe-card">
+     <% if recipe.categories.present? %>
+           
+            <div class="recipe-categories">
+              <% recipe.categories.each do |category| %>
+                <%= category.name %>
+              <% end %>
+            </div>
           <% end %>
-          <div class="recipe_text">
-            <h5 class="recipe-title"><%= recipe.title %></h5>
-            <p class="recipe-comment"><%= recipe.short_comment %></p>
-          </div>
+      <% if recipe.image.present? %>
+        <%= image_tag recipe.image.url, class: "recipe-img" %>
+      <% else %>
+        <%= image_tag '/images/noimage-1-760x460.png', class: "recipe-img" %>
+      <% end %>
+      
+      <div class="recipe_text">
+        <h5 class="recipe-title"><%= recipe.title %></h5>
+        <p class="recipe-comment"><%= recipe.short_comment %></p>
+      </div>
+      
+      <div class="sab_text_area">
+        <div class="span_text">
+          <span class="recipe-info-label">by: <%= recipe.user.name %></span>
+          <span class="recipe-info-label"></span> <%= recipe.created_at.strftime('%Y年%m月%d日') %>
+        </div>
+        
+        
+        <div class="recipe-info">
           <div class="recipe-link-container">
             <%= link_to recipe_path(recipe), class: "recipe-link" do %>
               <i class="bi bi-arrow-right-square"></i>
             <% end %>
           </div>
         </div>
-      <% end %>
-    <% end %>
-  </div>
+      </div>
+    </div>
+  <% end %>
+   <% end %>
+</div>
+
 <% else %>
-  <p>まだレシピが投稿されていません。</p>
+<p>まだです</p>
+
 <% end %>
-
-
 
 
 

@@ -55,6 +55,7 @@ end
 
   def edit
     @recipe = Recipe.find(params[:id])
+      @user_rooms = user_signed_in? ? current_user.rooms : []
   end
 
   def update

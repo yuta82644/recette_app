@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .room_show {
-  
   .comment_container {
     margin-top: 80px;
   }
@@ -65,7 +64,6 @@
 // new_room
 
 .room_new {
-
   .text_field {
     width: 400px;
     border: none;
@@ -75,7 +73,6 @@
     font-size: 2rem;
   }
   .move-btn {
-    
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -124,6 +121,132 @@
     color: #868484;
     font-size: 2rem;
   }
-  
 }
 
+// .room_edit
+
+.room_edit {
+  .edit_container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
+  }
+  h4 {
+    font-size: 2rem;
+    color: #767373;
+    margin-bottom: 50px;
+  }
+  .invite_area {
+    .text_field {
+      width: 300px;
+      border: none;
+      border-bottom: 0.3px solid #767373;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      height: 40px;
+    }
+  }
+  
+  .move-btn {
+    margin-bottom: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 200px;
+    max-width: 200px;
+    padding: 0px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    
+    &:before {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.1);
+      transform: translateX(-50%);
+    }
+    
+    &:after {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: #767373;
+      transform: scale(0, 1);
+      transform-origin: left top;
+      transition: transform 0.3s;
+    }
+    
+    &:hover {
+      opacity: 0.7;
+      
+      &:after {
+        transform: scale(1, 1);
+      }
+    }
+  }
+  .btn {
+    color: #868484;
+    font-size: 1.5rem;
+  }
+  
+  .member_index {
+    width: 200px;
+    margin-right: 120px;
+    .members-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .member-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+    
+    .member-name {
+      flex: 1;
+      font-size: 1.8rem;
+      color: #767373;
+    }
+    
+    .delete-link {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #767373;
+    }
+  }
+  
+  .rename_area {
+    
+    .name_field {
+      margin-left: 136px;
+      
+    }
+    .text_field {
+      width: 300px;
+      border: none;
+      border-bottom: 0.3px solid #767373;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      height: 40px;
+    }
+    
+    .name_text {
+      margin-left: 110px;
+      margin-top: 40px;
+      
+      font-size: 2rem;
+      color: #767373;
+      margin-bottom: 50px;
+    }
+   
+  }
+
+}

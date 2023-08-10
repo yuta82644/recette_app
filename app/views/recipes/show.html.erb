@@ -80,7 +80,7 @@
   
   <!-- 削除リンク -->
   <% if @recipe.user == current_user %>
-    <%= link_to '削除', recipe_path(@recipe), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn favorite_btn" %>
+    <%= link_to '削除', recipe_path(@recipe), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn favorite_btn"%>
      
   <% end %>
  

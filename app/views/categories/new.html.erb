@@ -2,18 +2,28 @@
 
 
 <div class="footer_fixed">
-  <%= form_with(model: Category.new, url: categories_path, local: true) do |f| %>
-    <div class="form-group">
-      <%= f.label :name, "新しいカテゴリー名" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-    <%= f.submit "作成", class: "btn btn-primary" %>
-  <% end %>
 
-  <h1>カテゴリー一覧</h1>
+  <%= form_with(model: Category.new, url: categories_path, local: true) do |f| %>
+
+    <div class="category_container">
+      
+      <div class="category_field">
+      <%= f.text_field :name, class: "text_area" %>
+      <div class="move-btn">
+    <%= f.submit "post", class: "btn" %>
+      </div>
+  <% end %>
+      </div>
+
+<div class="category_index">
+  <h4>Categoies</h4>
   <% @categories.each do |category| %>
-    <p><%= category.name %></p>
+    <p class="category_name"><%= category.name %></p>
     
   <% end %>
 </div>
+    </div>
 </div>
+</div>
+
+

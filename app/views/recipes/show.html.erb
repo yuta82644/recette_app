@@ -58,7 +58,8 @@
       </div>
     <% end %>
     </div>
-    <%# <% unless @recipe.user_id == current_user.id %>
+    
+    <% unless @recipe.user_id == current_user.id %>
       <% if @favorite.present? %>
     
         <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn  favorite_btn' %>
@@ -66,8 +67,24 @@
       <% else %>
         <%= link_to 'お気に入りする', favorites_path(recipe: @recipe.id), method: :post, class: 'btn favorite_btn' %>
       <% end %>
-    <%# <% end %>
+    <% end %>
     </div>
+
+
+      <% if @recipe.user == current_user %>
+    <%= link_to '編集', edit_recipe_path(@recipe), class: "btn favorite_btn" %>
+     
+  <% end %>
+  
+  
+  
+  <!-- 削除リンク -->
+  <% if @recipe.user == current_user %>
+    <%= link_to '削除', recipe_path(@recipe), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn favorite_btn" %>
+     
+  <% end %>
+ 
+  
 
 <div class="comment_container">
     <!-- コメント入力欄を表示するための部分 -->
@@ -85,6 +102,8 @@
 
 </div>
     
+    
+  
               <%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
   </div>
 </div>

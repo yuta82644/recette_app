@@ -68,6 +68,7 @@ end
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    
     @recipe.destroy
     redirect_to my_recipes_recipes_path
   end

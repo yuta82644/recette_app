@@ -8,7 +8,7 @@ class Recipe < ApplicationRecord
   attr_accessor :public_post
   mount_uploader :image, ImageUploader
 
-  has_many :recipe_categories
+  has_many :recipe_categories, dependent: :destroy
   has_many :categories, through: :recipe_categories
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user

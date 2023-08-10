@@ -10,8 +10,83 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
- *= require simple_calendar
 
  */
+
+//  共通
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  color: rgb(56, 54, 50);
+  background-color: #fafbfb;
+  font-family: "Noto Sans JP", sans-serif;
+
+  
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  width: 1100px;
+  margin: 0 auto;
+  padding: 0.4%;
+}
+
+// header
+
+.page_header {
+  height: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0px 4px 4px 0px rgba(119, 117, 117, 0.25);
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  p {
+    margin: 0;
+    padding-left: 100px;
+  }
+}
+
+footer {
+  background-color: rgba(145, 145, 142, 0.364);
+  text-align: center;
+  
+  padding: 20px 0;
+  margin-top: auto;
+  
+ 
+
+  p {
+    color: rgb(47, 48, 48);
+    font-size: 0.875rem;
+  }
+}
+
+.footer_fixed {
+   display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-bottom: 100px;
+}
+
+// 検索
+
+
+.page {
+  display: flex;
+  justify-content: flex-end;
+
+  .page_name {
+    margin-right: 40px;
+    color: #5a5454;
+    font-weight: 300;
+  }
+}

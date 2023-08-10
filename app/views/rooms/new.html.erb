@@ -1,17 +1,18 @@
 <!-- app/views/rooms/new.html.erb -->
 
-<h1>Create a New Room new.htmlroom</h1>
-
+<div class="footer_fixed">
+<div class="room_new wrapper">
 <%= form_with(model: @room, local: true) do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
+  <div class="room_name">
+   
+    <%= f.text_field :name, class: "text_field" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :introduction %>
-    <%= f.text_area :introduction, class: "form-control" %>
-  </div>
+  <div class="move-btn">
 
-  <%= f.submit "Create Room", class: "btn btn-primary" %>
+  <%= f.submit "Create Room", class: "btn", placeholder:'name'  %>
 <% end %>
+  </div>
+</div>
+
+</div>

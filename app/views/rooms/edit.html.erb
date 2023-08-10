@@ -1,44 +1,69 @@
-<h1><%= @room.name %> のルームページ</h1>
+<div class="footer_fixed">
+  <%= render 'shared/room-sidebar' %>
 
-<h2>メンバー一覧</h2>
+  <div class="page wrapper">
 
-<% if @members.any? %>
-  <ul>
-    <% @members.each do |member| %>
-      <li><%= member.name %></li>
+<h1 class= "page_name" ><%= @room.name %> </h1>
+</div>
+    
+  <div class="room_edit wrapper">
+
+
+    <!-- グループ情報編集用フォーム -->
+
+   <%= form_with(model: @room, url: invite_member_room_path(@room), method: :post, local: true) do |invite_form| %>
+
+    <div class="edit_container">
+  <div class="invite_area">
+      <h4>invite by name</h4>
+      
+        
+        <%= invite_form.text_field :invite_name, class: "text_field" %>
+     
+
+      <div class="move-btn">
+        <%= invite_form.submit "招待する", class: "btn" %>
+      </div>
     <% end %>
-  </ul>
-<% else %>
-  <p>メンバーはいません。</p>
-<% end %>
-
-<!-- グループ情報編集用フォーム -->
-<%= form_with(model: @room) do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
   </div>
+  <div class="member_index">
+    <h4>Menbers</h4>
 
-  <div class="field">
-    <%= f.label :introduction %>
-    <%= f.text_area :introduction %>
-  </div>
+    <% if @members.any? %>
+     <ul class="members-list">
+  <% @members.each do |member| %>
+    <li class="member-item">
+      <span class="member-name"><%= member.name %></span>
+      <%= link_to "削除", remove_member_room_path(@room, user_id: member.id), method: :patch, data: { confirm: "本当に削除しますか？" }, class: "delete-link" %>
+    </li>
+  <% end %>
+</ul>
 
-  <div class="actions">
-    <%= f.submit "更新する", class: "btn btn-primary" %>
-    <%= link_to "ルームに戻る", room_path(@room), class: "btn btn-secondary" %>
+    <% else %>
+      <p>メンバーはいません。</p>
+    <% end %>
   </div>
-<% end %>
+    </div>
+   
+   <div class="rename_area">
+   <h3 class="name_text">Room rename</h3>
+    <%= form_with(model: @room, url: room_path(@room), method: :patch, local: true) do |f| %>
+      <div class="name_field">
+       
+        <%= f.text_field :name, class: "text_field" %>
+      </div>
 
-<!-- グループにメンバーを招待するフォーム -->
- <%= form_with(model: @room, url: room_path(@room), local: true) do |invite_form| %>
-  <h2>グループにメンバーを招待</h2>
-  <div class="field">
-    <%= invite_form.label :invite_name, "ユーザー名" %>
-    <%= invite_form.text_field :invite_name %>
-  </div>
+      <div class="move-btn edit-link">
+        <%= f.submit "更新する", class: "btn edit_btn" %>
 
-  <div class="actions">
-    <%= invite_form.submit "招待する", class: "btn btn-primary" %>
+      </div>
+
+   </div>
+    <% end %>
+    <div class="move-btn">
+      <%= link_to "ルームを削除", room_path(@room), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn delete-btn" %>
+    </div>
+        <%= link_to "ルームに戻る", room_path(@room), class: "btn" %>
+   
   </div>
-<% end %>
+</div>

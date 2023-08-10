@@ -1,0 +1,132 @@
+.recipe-container {
+  display: grid;
+  gap: 30px;
+  margin-top: 6%;
+  margin-bottom: 50px;
+
+  // レスポンシブデザイン
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(1, minmax(240px, 1fr));
+  }
+}
+
+.recipe-card {
+  background-color: #ffffff;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #e9eaea;
+  border-radius: 3px;
+  box-shadow: 3px 2px 7px 0px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+    opacity: 0.75;
+  }
+}
+
+.recipe-categories {
+  margin-right: 260px;
+  color: #7e7d7d;
+}
+.recipe-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+
+}
+.recipe_text {
+  text-align: center;
+  margin-bottom: -38px;
+}
+.recipe-title {
+  font-size: 2rem;
+  font-weight: 200;
+  margin-bottom: 10px;
+  color: #7e7d7d;
+  margin-top: 6px;
+}
+
+.recipe-comment {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #5a5454;
+}
+span {
+  display: block;
+}
+
+.sab_text_area {
+  display: flex;
+  justify-content: space-between; /* 要素間を均等にスペースを空ける */
+  align-items: flex-end; /* 下揃え */
+  margin-top: 10px;
+}
+.recipe-info {
+  display: flex;
+  align-items: center; /* 縦方向中央揃え */
+}
+
+.span_text {
+  margin-left: -150px;
+    color: #c0c0c0b3;
+}
+.sab_span {
+  display: flex;
+  flex-direction: row;
+  color: #9a9898;
+}
+.recipe-link-container {
+  .recipe-link {
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+
+    .bi {
+      margin-right: 33px;
+      font-size: 50px;
+      color: rgb(134, 132, 132);
+      margin-left: 200%;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+// 検索
+.search {
+  margin-right: 40px;
+}
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  .dorop {
+    color: #464e57bd;
+  }
+}
+
+
+ .edit-link {
+ margin-left: 40px;
+ }

@@ -33,6 +33,7 @@ end
 
       if @recipe.save
         redirect_to recipes_path(@recipe), notice: "レシピを投稿しました！"
+         puts params[:recipe][:category_ids]
       else
 
         render :new
@@ -45,14 +46,16 @@ end
   def show
     @recipe = Recipe.find(params[:id])
     @favorite = current_user.favorites.find_by(recipe_id: @recipe.id)
-    @comments = @recipe.comments
+    
     @comment = @recipe.comments.build
+    @comments = @recipe.comments.order(created_at: :desc)
     
     
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
+      @user_rooms = user_signed_in? ? current_user.rooms : []
   end
 
   def update
@@ -66,6 +69,7 @@ end
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    
     @recipe.destroy
     redirect_to my_recipes_recipes_path
   end

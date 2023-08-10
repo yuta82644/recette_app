@@ -1,49 +1,109 @@
-<h1>show</h1>
 
-
-
-
-<h1><%= @recipe.title %></h1>
-<p><%= @recipe.short_comment %></p>
-
-<% if @recipe.image.present? %>
-        <%= image_tag @recipe.image.url, class: "recipe-img" %>
-      <% else %>
-        <p>noimage</p>
-      <% end %>
-
-
-<h2>材料</h2>
-<% @recipe.cooking_ingredients.each do |ingredient| %>
-  <div>
-    <%= ingredient.ingredient_name %> - <%= ingredient.quantity %> <%= ingredient.unit %>
+<%= render 'shared/sidebar' %>
+<div class="footer_fixed">
+  <div class="page wrapper">
+    <h1 class="page_name">レシピ詳細</h1>
   </div>
-<% end %>
-
-<h2>手順</h2>
-<% @recipe.procedures.each do |step| %>
-  <div>
-    <%= step.procedure_comment %>
-  </div>
-<% end %>
-
-
-<!-- コメント一覧を表示するための部分 -->
-<p>コメント一覧</p>
-<div id="comments_area">
-  <%= render partial: 'comments/index', locals: { comments: @comments, recipe: @recipe } %>
-</div>
-
-<!-- コメント入力欄を表示するための部分 -->
-<%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
-
-<%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
-
-<%# <% unless @recipe.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(recipe: @recipe.id), method: :post, class: 'btn btn-primary' %>
+  <div class="recipe_show wrapper">
+    <div class="recipe_container">
+      <div class="image_area">
+  <% @recipe.categories.each do |category| %>
+    <p class="category_text"><%= category.name %></p>
   <% end %>
-<%# <% end %>
-<%= link_to "一覧に戻る", recipes_path, class: "btn btn-secondary" %>
+        <% if @recipe.image.present? %>
+          <div class="image_box">
+            <%= image_tag @recipe.image.url, class: "recipe-img" %>
+          </div>
+        <% else %>
+          <%= image_tag '/images/noimage-1-760x460.png', class: "recipe-img" %>
+        <% end %>
+        <p class="short_comment"><%= @recipe.short_comment %></p>
+      </div>
+      <div class="recipe_text_area">
+      <div class="recipe_title">
+        <h3><%= @recipe.title %></h3>
+        <p><%= @recipe.tortal_quantity%></p>
+      </div>
+       
+
+
+ 
+  
+        <h4>材料</h4>
+        <% @recipe.cooking_ingredients.each do |ingredient| %>
+        <div class="ingredient_area">
+          <div class="ingredient_text">
+            
+        <dl>
+           
+            <dt> <%= ingredient.ingredient_name %></dt>
+        
+        
+           <dd> <%= ingredient.quantity %> <%= ingredient.unit %></dd>
+            
+        </dl>
+          </div>
+      </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="procedure_container">
+
+    <div class="procedure_area">
+
+    <h2>手順</h2>
+    <% @recipe.procedures.each do |step| %>
+      <div class="procedure_text">
+        <%= step.procedure_comment %>
+      </div>
+    <% end %>
+    </div>
+    
+    <% unless @recipe.user_id == current_user.id %>
+      <% if @favorite.present? %>
+    
+        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn  favorite_btn' %>
+     
+      <% else %>
+        <%= link_to 'お気に入りする', favorites_path(recipe: @recipe.id), method: :post, class: 'btn favorite_btn' %>
+      <% end %>
+    <% end %>
+    </div>
+
+
+      <% if @recipe.user == current_user %>
+    <%= link_to '編集', edit_recipe_path(@recipe), class: "btn favorite_btn" %>
+     
+  <% end %>
+  
+  
+  
+  <!-- 削除リンク -->
+  <% if @recipe.user == current_user %>
+    <%= link_to '削除', recipe_path(@recipe), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn favorite_btn"%>
+     
+  <% end %>
+ 
+  
+
+<div class="comment_container">
+    <!-- コメント入力欄を表示するための部分 -->
+    
+    <%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
+   
+
+          <div class="comment">
+              <!-- コメント一覧を表示するための部分 -->
+              <div id="comments_area">
+                <%= render partial: 'comments/index', locals: { comments: @comments, recipe: @recipe } %>
+              </div>
+          </div>
+
+
+</div>
+    
+    
+  
+              
+  </div>
+</div>

@@ -15,11 +15,11 @@ end
 
   def create
     favorite = current_user.favorites.create(recipe_id: params[:recipe])
-    redirect_to recipes_path, notice: "#{favorite.recipe.user.name}さんのレシピをお気に入り登録しました"
+    redirect_to recipe_path(params[:recipe]), notice: "#{favorite.recipe.user.name}さんのレシピをお気に入り登録しました"
   end
 
   def destroy
     favorite = current_user.favorites.find_by(id: params[:id]).destroy
-    redirect_to recipes_path, notice: "#{favorite.recipe.user.name}さんのレシピをお気に入り解除しました"
+    redirect_to recipe_path(favorite.recipe_id), notice: "#{favorite.recipe.user.name}さんのレシピをお気に入り解除しました"
   end
 end

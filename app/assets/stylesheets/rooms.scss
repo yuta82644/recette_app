@@ -1,3 +1,252 @@
 // Place all the styles related to the Rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.room_show {
+  .comment_container {
+    margin-top: 80px;
+  }
+  h3 {
+    color: rgb(166, 164, 164);
+    font-size: 3rem;
+    margin-top: 100px;
+  }
+
+  .task_container {
+    display: grid;
+    grid-template-columns: 60% 30%;
+    gap: 40px;
+    margin-bottom: 200px;
+    margin-top: 170px;
+
+    .title_form {
+      width: 200px;
+      border: none;
+      border-bottom: 1px solid rgb(156, 155, 155);
+      margin: 40px 40px;
+      font-size: 1.4rem;
+    }
+
+    .content_form {
+      width: 250px;
+      border: 0.3px solid rgb(156, 155, 155);
+      margin: 40px;
+      margin-top: 0;
+      height: 150px;
+      font-size: 1.4rem;
+      letter-spacing: 0.05;
+    }
+    .start_time {
+      margin-left: 40px;
+    }
+    .btn {
+      margin-left: 30px;
+      margin-top: 30px;
+
+      input {
+        width: 100px;
+        color: #848484;
+        border: none;
+        border-bottom: 0.3px solid #6b6a6a;
+        background-color: #ffffff;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+    h2 {
+      color: rgb(166, 164, 164);
+      margin-left: 30px;
+    }
+  }
+}
+
+// new_room
+
+.room_new {
+  .text_field {
+    width: 400px;
+    border: none;
+    height: 40px;
+    border-bottom: 0.3px solid #848484;
+    margin-top: 200px;
+    font-size: 2rem;
+  }
+  .move-btn {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 200px;
+    margin-top: 100px;
+
+    max-width: 200px;
+    padding: 0px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+
+    &:before {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.1);
+      transform: translateX(-50%);
+    }
+
+    &:after {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: #767373;
+      transform: scale(0, 1);
+      transform-origin: left top;
+      transition: transform 0.3s;
+    }
+
+    &:hover {
+      opacity: 0.7;
+
+      &:after {
+        transform: scale(1, 1);
+      }
+    }
+  }
+  .btn {
+    color: #868484;
+    font-size: 2rem;
+  }
+}
+
+// .room_edit
+
+.room_edit {
+  .edit_container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
+  }
+  h4 {
+    font-size: 2rem;
+    color: #767373;
+    margin-bottom: 50px;
+  }
+  .invite_area {
+    .text_field {
+      width: 300px;
+      border: none;
+      border-bottom: 0.3px solid #767373;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      height: 40px;
+    }
+  }
+  
+  .move-btn {
+    margin-bottom: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 200px;
+    max-width: 200px;
+    padding: 0px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    
+    &:before {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.1);
+      transform: translateX(-50%);
+    }
+    
+    &:after {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: #767373;
+      transform: scale(0, 1);
+      transform-origin: left top;
+      transition: transform 0.3s;
+    }
+    
+    &:hover {
+      opacity: 0.7;
+      
+      &:after {
+        transform: scale(1, 1);
+      }
+    }
+  }
+  .btn {
+    color: #868484;
+    font-size: 1.5rem;
+  }
+  
+  .member_index {
+    width: 200px;
+    margin-right: 120px;
+    .members-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .member-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+    
+    .member-name {
+      flex: 1;
+      font-size: 1.8rem;
+      color: #767373;
+    }
+    
+    .delete-link {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #767373;
+    }
+  }
+  
+  .rename_area {
+    
+    .name_field {
+      margin-left: 136px;
+      
+    }
+    .text_field {
+      width: 300px;
+      border: none;
+      border-bottom: 0.3px solid #767373;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      height: 40px;
+    }
+    
+    .name_text {
+      margin-left: 110px;
+      margin-top: 40px;
+      
+      font-size: 2rem;
+      color: #767373;
+      margin-bottom: 50px;
+    }
+   
+  }
+
+}

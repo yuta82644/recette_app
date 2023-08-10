@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   end
 
   resources :rooms do
+    member do
+      patch :remove_member
+      post :invite_member
+    end
      resources :room_comments
      resources :tasks
   end

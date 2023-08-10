@@ -1,109 +1,147 @@
 <!-- room/show.html.erb -->
-<h1><%= @room.name %> のルームページ</h1>
+<div class="fotter_fiexd">
+<div class="page wrapper">
+<h1 class= "page_name" ><%= @room.name %> </h1>
+</div>
 
-<h2>メンバー一覧</h2>
-<% if @members.any? %>
-  <ul>
-    <% @members.each do |member| %>
-      <li><%= member.name %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>メンバーはいません。</p>
-<% end %>
+<div class="room_show wrapper">
+<%= render 'shared/room-sidebar' %>
 
-<h2>投稿されたレシピ検索</h2>
+
+
 <%= search_form_for @q, url: room_path(@room), method: :get do |f| %>
-  <div class="field">
-    <%= f.label :title_cont, 'タイトル検索' %>
-    <%= f.search_field :title_cont %>
-  </div>
-  <div class="field">
-    <%= f.label :categories_name_eq, 'カテゴリー検索' %>
-    <%= f.collection_select :categories_name_eq, Category.all, :name, :name, include_blank: true %>
-  </div>
+<div class="search-container wrapper">
+  <div class="search col-4">
 
-  <%= f.submit '検索' %>
+    <div class="input-group">
+      <%= f.search_field :title_cont, class: "form-control", placeholder: "タイトル検索" %>
+      <div class="input-group-append">
+        <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
+          <i class="bi bi-search"></i>
+        <% end %>
+      </div>
+    </div>
+  <div class="input-group">
+    <%= f.collection_select :categories_name_eq, Category.all, :name, :name, {prompt: "カテゴリー検索 ↓" }, { class: "form-control dorop"} %>
+    <div class="input-group-append">
+      <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
+        <i class="bi bi-search"></i>
+      <% end %>
+  </div>
+    </div>
+  </div>
+</div>
 <% end %>
 <!-- ルームに投稿されたレシピを表示 -->
-<h2>投稿されたレシピ一覧</h2>
 <% if @recipes.any? %>
-  <ul>
-    <% @recipes.each do |recipe| %>
-      <% if @room.users.include?(recipe.user) && !recipe.public? %>
-        <li>
-          <h3><%= recipe.title %></h3>
-          <p><%= recipe.short_comment %></p>
-
-          <h4>材料</h4>
-          <% recipe.cooking_ingredients.each do |ingredient| %>
-            <div>
-              <%= ingredient.ingredient_name %> - <%= ingredient.quantity %> <%= ingredient.unit %>
+<div class="recipe-container wrapper">
+  <% @recipes.each do |recipe| %>
+   <% if @room.users.include?(recipe.user) && !recipe.public? %>
+    <div class="recipe-card">
+     <% if recipe.categories.present? %>
+           
+            <div class="recipe-categories">
+              <% recipe.categories.each do |category| %>
+                <%= category.name %>
+              <% end %>
             </div>
           <% end %>
-
-          <h4>手順</h4>
-          <% recipe.procedures.each do |step| %>
-            <div>
-              <%= step.procedure_comment %>
-            </div>
-          <% end %>
-
-          <%= link_to "詳細を見る", recipe_path(recipe) %>
-          <%= link_to "編集", edit_recipe_path(recipe) %>
-        </li>
+      <% if recipe.image.present? %>
+        <%= image_tag recipe.image.url, class: "recipe-img" %>
+      <% else %>
+        <%= image_tag '/images/noimage-1-760x460.png', class: "recipe-img" %>
       <% end %>
-    <% end %>
-  </ul>
+      
+      <div class="recipe_text">
+        <h5 class="recipe-title"><%= recipe.title %></h5>
+        <p class="recipe-comment"><%= recipe.short_comment %></p>
+      </div>
+      
+      <div class="sab_text_area">
+        <div class="span_text">
+          <span class="recipe-info-label">by: <%= recipe.user.name %></span>
+          <span class="recipe-info-label"></span> <%= recipe.created_at.strftime('%Y年%m月%d日') %>
+        </div>
+        
+        
+        <div class="recipe-info">
+          <div class="recipe-link-container">
+            <%= link_to recipe_path(recipe), class: "recipe-link" do %>
+              <i class="bi bi-arrow-right-square"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+   <% end %>
+</div>
+
 <% else %>
-  <p>まだレシピが投稿されていません。</p>
+<p>まだレシピはありません</p>
+
 <% end %>
 
 
 
 
-<p>comment</p>
+
+
+
+
+
+<h3>RoomChat</h3>
+  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+<div class="comment_container">
+
+  <%= render partial: 'room_comments/form', locals: { comment: @comment, room: @room } %>
+
+<div class="comment">
  <div id="comments_area">
     <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
     <%= render partial: 'room_comments/index', locals: { comments: @comments, room: @room } %>
   </div>
+</div>
 
-  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-  <%= render partial: 'room_comments/form', locals: { comment: @comment, room: @room } %>
+</div>
 
-
-
+<div class="task_container">
 
 <!-- カレンダー表示 -->
-<%= month_calendar events: @tasks, start_date: Date.today, click_day: room_tasks_path(@room, date: '%{day}') do |date, tasks| %>
+<div class="calendar_area">
+<%= month_calendar events: @tasks, start_date: Date.today, click_day: room_tasks_path(@room, date: '%{day}'),locale: :ja do |date, tasks| %>
   <%= date.day %>
   <% tasks.each do |task| %>
     <p><%= link_to task.title, room_task_path(@room, task) %></p>
    
   <% end %>
 <% end %>
+</div>
 
 
-
+<div class="task_area">
 <!-- タスク投稿フォーム -->
 <h2>タスクの投稿</h2>
 <%= form_with(model: [@room, Task.new]) do |form| %>
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    
+    <%= form.text_field :title, class:"title_form", placeholder:"title"%>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+   
+    <%= form.text_area :content, class:"content_form", placeholder:"content" %>
   </div>
 
   <div class="field">
-    <%= form.label :start_time, '開始日時' %>
-    <%= form.datetime_local_field :start_time %>
+   
+    <%= form.datetime_local_field :start_time,  class: "start_time" %>
   </div>
-
-  <%= form.submit '投稿' %>
+<div class="btn">
+  <%= form.submit 'create task',class: "task-post" %>
+</div>
+</div>
+</div>
 <% end %>
 
 
@@ -111,8 +149,10 @@
 
 
 
+<%= link_to 'ホームに戻る', recipes_path %>
 
-
+</div>
+</div>
+ 
 
  
-<%= link_to 'ホームに戻る', recipes_path %>

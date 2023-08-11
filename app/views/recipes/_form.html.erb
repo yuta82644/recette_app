@@ -4,6 +4,17 @@
 <h1 class="page_name">レシピ作成</h1>
 </div>
 <%= form_with(model: @recipe, local: true) do |f| %>
+
+<% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+      <ul>
+        <% @recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div class="recipe_new wrapper">
   <div class="recipe_container">
 
@@ -83,7 +94,7 @@
   <div class="room_form"></div>
   
    <%= f.select :room_id, options_for_select(@user_rooms.pluck(:name, :id), @user_rooms.first.id), { prompt: "" }, class: "form-control room_select" %>
-
+<%= @recipe.room_id %>
   </div>
 
 

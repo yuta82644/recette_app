@@ -28,9 +28,11 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
+     @room.users << current_user
     @room.owner = current_user
+   
     if @room.save
-      redirect_to room_path(@room), notice: "Room was successfully created."
+      redirect_to edit_room_path(@room), notice: "Room was successfully created."
     else
       render :new
     end

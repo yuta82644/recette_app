@@ -5,8 +5,8 @@ class CategoriesController < ApplicationController
   end
   
   def new
-    @category = Category.new
     @categories = Category.all
+    @category = Category.new
   end
 
   def create
@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to new_category_path, notice: "カテゴリーを作成しました！"
     else
+       @categories = Category.all 
       render :new
     end
   end

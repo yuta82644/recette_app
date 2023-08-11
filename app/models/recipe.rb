@@ -14,9 +14,14 @@ class Recipe < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
 
-  validates :room_id, presence: true, if: -> { room.present? }
-
-  # タイトル検索
+  
+   validates :title, presence: true, length: { maximum: 20 }
+  # validates :room_id, presence: true, if: -> { room.present? }
+  validates :title, presence: true, length: { maximum: 20 }
+  validates :short_comment, presence: true
+  validates :category_ids, presence: true
+  validates :tortal_quantity, presence: true
+  # タイトル検索 
   def self.ransackable_attributes(auth_object = nil)
     %w[title]
   end

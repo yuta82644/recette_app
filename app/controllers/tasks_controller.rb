@@ -8,20 +8,23 @@ class TasksController < ApplicationController
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
-  def new
-    @task = @room.tasks.new
-  end
+  # def new
+  #   @task = @room.tasks.new
+  # end
 
   def create
     @task = @room.tasks.new(task_params)
     if @task.save
-      redirect_to room_path(@room), notice: 'Task was successfully created.'
+      redirect_to room_path(@room), notice: 'タスクを作成しました'
     else
-      render :new
+      @tasks = @room.tasks.all 
+      
+    redirect_to room_path(@room), notice: 'title content dayを入力してください'
     end
   end
-
+  
   def show
+    
     @room = Room.find(params[:room_id])
     @task = @room.tasks.find(params[:id])
   end

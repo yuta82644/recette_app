@@ -1,8 +1,8 @@
 <%= form_with(model: @task, url: room_path(@room), local: true) do |form| %>
 
-  <% if task.errors.any? %>
+  <% if @task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h2><%= pluralize(task.errors.count, "error") %> 件のエラーがあります</h2>
       <ul>
       <% task.errors.full_messages.each do |message| %>
         <li><%= message %></li>

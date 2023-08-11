@@ -30,7 +30,7 @@
     <li><%= link_to 'My favorite', favorites_path, class: "menu_text" %></li>
     <li>
       <% if current_user && current_user.rooms.any? %>
-        <p class="menu_text">所属しているルーム</p>
+        <%= link_to "YourRoom", rooms_path, class: "menu_text" %>
         <ul class="scroll">
           <% current_user.rooms.each do |room| %>
             <li><%= link_to room.name, room_path(room), class: "menu_room_text" %></li>

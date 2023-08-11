@@ -123,9 +123,19 @@
 <!-- タスク投稿フォーム -->
 <h2>タスクの投稿</h2>
 <%= form_with(model: [@room, Task.new]) do |form| %>
+ <% if @task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@task.errors.count, "error") %> 件のエラーがあります</h2>
+        <ul>
+          <% @task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <div class="field">
-    
-    <%= form.text_field :title, class:"title_form", placeholder:"title"%>
+    <%= form.text_field :title, class: "title_form", placeholder: "title" %>
+  
   </div>
 
   <div class="field">
@@ -137,6 +147,16 @@
    
     <%= form.datetime_local_field :start_time,  class: "start_time" %>
   </div>
+   <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> 件のエラーがあります</h2>
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div class="btn">
   <%= form.submit 'create task',class: "task-post" %>
 </div>

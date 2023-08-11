@@ -30,12 +30,14 @@ end
     @recipe = current_user.recipes.build(recipe_params)
 
       @recipe.user = current_user
-
+@user_rooms = current_user.rooms
       if @recipe.save
         redirect_to recipes_path(@recipe), notice: "レシピを投稿しました！"
-         puts params[:recipe][:category_ids]
+        
+      
+        
       else
-
+ 
         render :new
       end
     end

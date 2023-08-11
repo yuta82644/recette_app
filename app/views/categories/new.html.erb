@@ -4,7 +4,16 @@
 <div class="footer_fixed">
 
   <%= form_with(model: Category.new, url: categories_path, local: true) do |f| %>
-
+<% if @category.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+        <ul>
+          <% @category.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="category_container">
       
       <div class="category_field">

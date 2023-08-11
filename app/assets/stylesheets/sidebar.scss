@@ -27,13 +27,14 @@ nav.nav {
 nav.nav ul {
   border: none;
   padding: 0;
+ 
 }
 
 .toggle {
   position: relative;
   left: 100%;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 60px;
   color: #fff;
   display: flex;
   align-items: center;
@@ -80,12 +81,17 @@ nav.nav ul {
 
 .logo {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 
-  a {
-    text-decoration: none;
-    color: #888;
-    font-size: 2rem;
+  .logo_img {
+    width: 150px;
+    margin-left: -25px;
+    margin-top: 20px;
+    height: auto;
+    margin-bottom: 10px;
+    &:hover {
+      opacity: 0.3;
+    }
   }
 }
 
@@ -93,7 +99,7 @@ nav.nav ul {
   display: block;
   list-style: none;
   margin: 0;
- 
+  padding: 0;
 
   // p {
   //   padding: 10px 20px;
@@ -145,24 +151,25 @@ nav.nav ul {
 }
 .scroll {
   overflow: scroll;
-  height: 120px;
+  height: 70px;
 }
 .space {
-  height: 140px;
+  height: 100px;
 }
 .menu_text {
   display: block;
   list-style: none;
+
   margin: 0;
   padding: 0;
 
-  padding: 18px 20px;
+ padding: 15px 41px;
   display: block;
-  color: #313131;
-  font-size: 1.8rem;
+  color: #656565;
+  font-size: 1.6rem;
   text-decoration: none;
   transition: all 200ms ease;
-  font-weight: 300;
+  font-weight: 400;
 
   &:hover {
     background-color: #f1f1f1;
@@ -178,7 +185,7 @@ nav.nav ul {
   font-size: 1.6rem;
   text-decoration: none;
   transition: all 200ms ease;
-  padding-left: 40px;
+  padding-left: 70px;
 
   text-decoration: none;
 

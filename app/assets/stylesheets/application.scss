@@ -26,8 +26,6 @@ body {
   color: rgb(56, 54, 50);
   background-color: #fafbfb;
   font-family: "Noto Sans JP", sans-serif;
-
-  
 }
 
 a {
@@ -43,26 +41,28 @@ a {
 // header
 
 .page_header {
-  height: 50px;
+  height: 60px;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 4px 4px 0px rgba(119, 117, 117, 0.25);
   display: flex;
   align-items: center;
   margin-bottom: 40px;
-  p {
-    margin: 0;
-    padding-left: 100px;
+  .logo_img {
+   width: 145px;
+    margin-top: 5px;
+    margin-left: 120px;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 
 footer {
   background-color: rgba(145, 145, 142, 0.364);
   text-align: center;
-  
+
   padding: 20px 0;
   margin-top: auto;
-  
- 
 
   p {
     color: rgb(47, 48, 48);
@@ -71,14 +71,13 @@ footer {
 }
 
 .footer_fixed {
-   display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-bottom: 100px;
 }
 
 // 検索
-
 
 .page {
   display: flex;

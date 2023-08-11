@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root to:'recipes#index'
+  root to:'top#index'
 
   resources :recipes do
     collection do
@@ -18,7 +18,14 @@ Rails.application.routes.draw do
      resources :tasks
   end
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: "users/sessions",
+  }
+  devise_scope :user do
+  post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+   post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
+end
   resources :categories, only: [:new, :create]
 
   resources :favorites

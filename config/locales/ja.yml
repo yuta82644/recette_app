@@ -181,3 +181,7 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  recipe:
+      short_comment: "一言コメント"
+      category_ids: "カテゴリー"
+      tortal_quantity: "出来高"

@@ -1,7 +1,3 @@
-<!-- app/views/room_comments/_edit.html.erb -->
-
-
-
 <%= form_with(model: [room, comment], local: false) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
@@ -13,12 +9,9 @@
       </ul>
     </div>
   <% end %>
-  
   <div class="field">
-  
     <%= form.text_area :content, id: "comment_content_#{comment.id}" %>
   </div>
-  
   <div class="actions">
     <%= form.submit "edit" %>
   </div>

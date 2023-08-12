@@ -1,122 +1,78 @@
 <div class="footer_fixed">
-<%= render 'shared/sidebar' %>
-<div class="page wrapper">
-<h1 class="page_name">レシピ作成</h1>
-</div>
-<%= form_with(model: @recipe, local: true) do |f| %>
-
-<% if @recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-      <ul>
-        <% @recipe.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-<div class="recipe_new wrapper">
-  <div class="recipe_container">
-
-     <div class="image_area">
-    <div class="image_box" id="image_preview"></div>
-    
-    <%= f.file_field :image, class: "image_upload", accept: "image/*" %>
+  <%= render 'shared/sidebar' %>
+  <div class="page wrapper">
+    <h1 class="page_name">レシピ作成</h1>
   </div>
-
-<div class="recipe_text_area">
-    <div class="recipe_title_text">
-      <div class="recipe_title">
-
-        <%= f.text_field :title, class: "title_form", placeholder:"title" %>
+  <%= form_with(model: @recipe, local: true) do |f| %>
+    <% if @recipe.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+        <ul>
+          <% @recipe.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       </div>
-      <div class= "recipe_quantity">
-
-        <%= f.text_field :tortal_quantity, class: "tortal_quantity_form", placeholder:"出来高" %>
+    <% end %>
+    <div class="recipe_new wrapper">
+      <div class="recipe_container">
+        <div class="image_area">
+          <div class="image_box" id="image_preview"></div>
+          <%= f.file_field :image, class: "image_upload", accept: "image/*" %>
+        </div>
+        <div class="recipe_text_area">
+          <div class="recipe_title_text">
+            <div class="recipe_title">
+              <%= f.text_field :title, class: "title_form", placeholder: "title" %>
+            </div>
+            <div class="recipe_quantity">
+              <%= f.text_field :tortal_quantity, class: "tortal_quantity_form", placeholder: "出来高" %>
+            </div>
+          </div>
+          <div class="short_comment_area">
+            <%= f.text_area :short_comment, class: "short_comment_form", placeholder: "一言コメント"  %>
+          </div>
+          <h3>材料</h3>
+          <div id="cooking_ingredients">
+            <%= f.fields_for :cooking_ingredients do |ingredient| %>
+              <%= render partial: 'cooking_ingredient_fields', locals: { f: f, ingredient: ingredient } %>
+            <% end %>
+          </div>
+          <div class="ingredient_container">
+            <%= link_to_add_association '材料追加⬇', f, :cooking_ingredients, wrap_object: :div, class: 'ingredient_container', render_options: { partial: 'recipes/cooking_ingredient_fields' } %>
+          </div>
+        </div>
       </div>
-    </div>
-      <div class="short_comment_area">
-       
-        <%= f.text_area :short_comment, class: "short_comment_form", placeholder:"一言コメント"  %>
+      <h3>作り方</h3>
+      <%= f.fields_for :procedures do |step| %>
+        <div class="procedures_container">
+          <div class="procedures_area">
+            <%= step.text_area :procedure_comment, class: "procedures_form" %>
+          </div>
+        </div>
+      <% end %>
+      <h3 class="sab_text">カテゴリー選択</h3>
+      <div class="category_area">
+        <%= f.label :category_ids, "Categories" %>
+        <%= f.collection_select :category_ids, Category.all, :id, :name, {}, { prompt: '選択↓', class: "form-control category_form", multiple: true } %>
       </div>
-
- <h3>材料</h3>
-
-<div id="cooking_ingredients">
-  <%= f.fields_for :cooking_ingredients do |ingredient| %>
-  <%= render partial: 'cooking_ingredient_fields', locals: { f: f, ingredient: ingredient } %>
-
-  <% end %>
-
-</div>
-<div class="ingredient_container">
-<%= link_to_add_association '材料追加⬇', f, :cooking_ingredients, wrap_object: :div, class: 'ingredient_container', render_options: { partial: 'recipes/cooking_ingredient_fields' } %>
-
-</div>
-
-
-   </div>
-
-
-</div>
-
-  <h3>作り方</h3>
-  <%= f.fields_for :procedures do |step| %>
-<div class="procedures_container">
-    <div class="procedures_area">
-    
-      <%= step.text_area :procedure_comment, class: "procedures_form" %>
-    </div>
-  <% end %>
-
-</div>
-
- <h3 class="sab_text">カテゴリー選択</h3>
-<div class="category_area">
-<%= f.label :category_ids, "Categories" %>
- <%= f.collection_select :category_ids, Category.all, :id, :name, {}, { prompt: '選択↓', class: "form-control category_form", multiple: true } %>
-
-
-    
-  
-</div>
-
-<h3 class="sab_text">投稿先選択</h3>
-   <h5>一般公開はチェックしてください</h5><h5>ルーム公開の場合はチェックを外してください</h5>
-<div class="post_area">
-
-  <div class="public_form">
-  <%= f.check_box :public, class: "checkbox" %>
-
+      <h3 class="sab_text">投稿先選択</h3>
+      <h5>一般公開はチェックしてください</h5>
+      <h5>ルーム公開の場合はチェックを外してください</h5>
+      <div class="post_area">
+        <div class="public_form">
+          <%= f.check_box :public, class: "checkbox" %>
+        </div>
+        <div class="room_form">
+          <%= f.select :room_id, options_for_select(@user_rooms.pluck(:name, :id), @user_rooms.first.id), { prompt: "" }, class: "form-control room_select" %>
+          <%= @recipe.room_id %>
+        </div>
+      </div>
+      <div class="post-btn">
+        <%= f.submit "POST", class: "btn" %>
+      </div>
+    <% end %>
   </div>
-
-  
-  <div class="room_form"></div>
-  
-   <%= f.select :room_id, options_for_select(@user_rooms.pluck(:name, :id), @user_rooms.first.id), { prompt: "" }, class: "form-control room_select" %>
-<%= @recipe.room_id %>
-  </div>
-
-
-
-
-<div class="post-btn">
-
-  <%= f.submit "POST", class:"btn" %>
-</div>
-
-<% end %>
-</div>
-
-
-
-
-
-
-
-
-
 </div>
 <%= javascript_pack_tag 'recipe_field.js' %>
 <%= javascript_pack_tag 'preview.js' %>
-

@@ -1,93 +1,65 @@
-
 <%= render 'shared/sidebar' %>
 
-
-  <div class="footer_fixed">
-  <!-- Actual search box -->
- 
-  
-
-
-<%= search_form_for @q, url: recipes_path, method: :get do |f| %>
-
-<div class="search-container wrapper">
-  <div class="search col-4">
-
-    <div class="input-group">
-      <%= f.search_field :title_cont, class: "form-control", placeholder: "タイトル検索" %>
-      <div class="input-group-append">
-        <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
-          <i class="bi bi-search"></i>
-        <% end %>
-      </div>
-    </div>
-
-
-  <div class="input-group">
-    <%= f.collection_select :categories_name_eq, Category.all, :name, :name, {prompt: "カテゴリー検索 ↓" }, { class: "form-control dorop"} %>
-    <div class="input-group-append">
-      <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
-        <i class="bi bi-search"></i>
-      <% end %>
-  </div>
-    </div>
-  </div>
-</div>
-<% end %>
-
-
-
-
-<div class="recipe-container wrapper">
-  <% @recipes.each do |recipe| %>
-    <div class="recipe-card">
-     <% if recipe.categories.present? %>
-           
-            <div class="recipe-categories">
-              <% recipe.categories.each do |category| %>
-                <%= category.name %>
-              <% end %>
-            </div>
-          <% end %>
-      <% if recipe.image.present? %>
-        <%= image_tag recipe.image.url, class: "recipe-img" %>
-      <% else %>
-        <%= image_tag '/images/noimage-1-760x460.png', class: "recipe-img" %>
-      <% end %>
-      
-      <div class="recipe_text">
-        <h5 class="recipe-title"><%= recipe.title %></h5>
-        <p class="recipe-comment"><%= recipe.short_comment %></p>
-      </div>
-      
-      <div class="sab_text_area">
-        <div class="span_text">
-          <span class="recipe-info-label">by: <%= recipe.user.name %></span>
-          <span class="recipe-info-label"></span> <%= recipe.created_at.strftime('%Y年%m月%d日') %>
+<div class="footer_fixed">
+  <!-- 検索 -->
+  <%= search_form_for @q, url: recipes_path, method: :get do |f| %>
+    <div class="search-container wrapper">
+      <div class="search col-4">
+        <div class="input-group">
+          <%= f.search_field :title_cont, class: "form-control", placeholder: "タイトル検索" %>
+          <div class="input-group-append">
+            <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
+              <i class="bi bi-search"></i>
+            <% end %>
+          </div>
         </div>
-        
-        
-        <div class="recipe-info">
-          <div class="recipe-link-container">
-            <%= link_to recipe_path(recipe), class: "recipe-link" do %>
-              <i class="bi bi-arrow-right-square"></i>
+        <div class="input-group">
+          <%= f.collection_select :categories_name_eq, Category.all, :name, :name, { prompt: "カテゴリー検索 ↓" }, { class: "form-control dorop" } %>
+          <div class="input-group-append">
+            <%= f.button :submit, class: "btn btn-outline-secondary", value: "" do %>
+              <i class="bi bi-search"></i>
             <% end %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
-</div>
 
-
-
-<%= link_to 'ホームに戻る', recipes_path %>
-
-
-
-
+  <div class="recipe-container wrapper">
+    <% @recipes.each do |recipe| %>
+      <div class="recipe-card">
+        <% if recipe.categories.present? %>
+          <div class="recipe-categories">
+            <% recipe.categories.each do |category| %>
+              <%= category.name %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if recipe.image.present? %>
+          <%= image_tag recipe.image.url, class: "recipe-img" %>
+        <% else %>
+          <%= image_tag '/images/noimage-1-760x460.png', class: "recipe-img" %>
+        <% end %>
+        <div class="recipe_text">
+          <h5 class="recipe-title"><%= recipe.title %></h5>
+          <p class="recipe-comment"><%= recipe.short_comment %></p>
+        </div>
+        <div class="sab_text_area">
+          <div class="span_text">
+            <span class="recipe-info-label">by: <%= recipe.user.name %></span>
+            <span class="recipe-info-label"></span> <%= recipe.created_at.strftime('%Y年%m月%d日') %>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-link-container">
+              <%= link_to recipe_path(recipe), class: "recipe-link" do %>
+                <i class="bi bi-arrow-right-square"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 
-
-
-
+  <%= link_to 'ホームに戻る', recipes_path %>
+</div>

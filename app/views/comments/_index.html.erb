@@ -13,7 +13,7 @@
             <p class="created-at"> <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
           </div>
         </div>
-       <div class="comment-actions">
+      <div class="comment-actions">
   <% if comment.user == current_user %>
     <div class="actions">
       <%= link_to edit_recipe_comment_path(recipe, comment), remote: true, class: "edit-link" do %>
@@ -25,7 +25,6 @@
     </div>
   <% end %>
 </div>
-     
       </li>
     <% end %>
   <% end %>

@@ -1,17 +1,10 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
-  
-  
-  @q = current_user.favorites.includes(recipe: :categories).ransack(params[:q])
-  
-  
-  
-  @favorites = @q.result(distinct: true)
-end
-
+    @q = current_user.favorites.includes(recipe: :categories).ransack(params[:q])
+    @favorites = @q.result(distinct: true)
+  end
 
   def create
     favorite = current_user.favorites.create(recipe_id: params[:recipe])

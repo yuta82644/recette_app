@@ -13,14 +13,11 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @user_rooms = current_user.rooms if user_signed_in?
     @members = @room.users
-
     @recipes = @room.recipes
     @comments = @room.room_comments.order(created_at: :desc)
     @comment = @room.room_comments.build
-
     @q = @room.recipes.ransack(params[:q])
     @recipes = @q.result(distinct: true).order(created_at: :desc)
-
     @tasks = @room.tasks.all
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @task = @room.tasks.new
@@ -28,9 +25,9 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-     @room.users << current_user
+    @room.users << current_user
     @room.owner = current_user
-   
+
     if @room.save
       redirect_to edit_room_path(@room), notice: "Room was successfully created."
     else
@@ -45,32 +42,31 @@ class RoomsController < ApplicationController
   end
 
   def update
-  @room = Room.find(params[:id])
+    @room = Room.find(params[:id])
 
-  if @room.update(room_params)
-    redirect_to room_path(@room), notice: "Room was successfully updated."
-  else
-    render :edit
+    if @room.update(room_params)
+      redirect_to room_path(@room), notice: "Room was successfully updated."
+    else
+      render :edit
+    end
   end
-end
 
-def invite_member
-  @room = Room.find(params[:id])
-  invite_name = params[:room][:invite_name]
-  user = User.find_by(name: invite_name)
+  def invite_member
+    @room = Room.find(params[:id])
+    invite_name = params[:room][:invite_name]
+    user = User.find_by(name: invite_name)
 
-  if user
-    @room.users << user
-    redirect_to edit_room_path(@room), notice: "#{invite_name} さんをグループに招待しました！"
-  else
-    redirect_to edit_room_path(@room), alert: "#{invite_name} さんは登録されていません。"
+    if user
+      @room.users << user
+      redirect_to edit_room_path(@room), notice: "#{invite_name} さんをグループに招待しました！"
+    else
+      redirect_to edit_room_path(@room), alert: "#{invite_name} さんは登録されていません。"
+    end
   end
-end
 
   def destroy
     @room = Room.find(params[:id])
 
-    # Only the owner should be able to delete the room
     if @room.owner == current_user
       @room.destroy
       redirect_to rooms_path, notice: "ルームを削除しました。"
@@ -90,8 +86,6 @@ end
       redirect_to edit_room_path(@room), alert: "メンバーを削除できるのはオーナーのみです。"
     end
   end
-
-
 
   private
 

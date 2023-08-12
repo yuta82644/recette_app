@@ -27,8 +27,12 @@
     <% end %>
   </div>
   <div class="member_index">
+  
     <h4>Menbers</h4>
 
+<div class="owner_area">
+<span>owner:   </span>  <p> <%= @room.owner.name %></p>
+</div>
     <% if @members.any? %>
      <ul class="members-list">
   <% @members.each do |member| %>

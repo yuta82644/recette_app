@@ -21,7 +21,7 @@ end
     @user_rooms = user_signed_in? ? current_user.rooms : []
     @public_post = public_post?
     @categories = Category.all
-    @categroy = Category.new
+   
   end
 
   def create
@@ -29,15 +29,15 @@ end
 
     @recipe = current_user.recipes.build(recipe_params)
 
-      @recipe.user = current_user
+      # @recipe.user = current_user
 @user_rooms = current_user.rooms
       if @recipe.save
-        redirect_to recipes_path(@recipe), notice: "レシピを投稿しました！"
+        redirect_to recipe_path(@recipe), notice: "レシピを投稿しました！"
         
       
         
       else
- 
+       
         render :new
       end
     end
@@ -94,7 +94,7 @@ end
       :public_post,
       :image_cache,
       procedures_attributes: [:procedure_comment, :_destroy],
-      cooking_ingredients_attributes: [:ingredient_name, :quantity, :unit, :_destroy],
+      cooking_ingredients_attributes: [:id, :ingredient_name, :quantity, :unit, :_destroy],
       category_ids: []
     )
   end

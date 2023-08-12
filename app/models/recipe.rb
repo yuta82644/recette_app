@@ -16,8 +16,8 @@ class Recipe < ApplicationRecord
 
   
    validates :title, presence: true, length: { maximum: 20 }
-  # validates :room_id, presence: true, if: -> { room.present? }
-  validates :title, presence: true, length: { maximum: 20 }
+  # # validates :room_id, presence: true, if: -> { room.present? }
+  # validates :title, presence: true, length: { maximum: 20 }
   validates :short_comment, presence: true
   validates :category_ids, presence: true
   validates :tortal_quantity, presence: true

@@ -28,14 +28,15 @@
 
 <div class="top_link wrapper">
 <div class="move-btn">
-<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn" %><br>
+<%= link_to 'ゲストログイン(閲覧用）', users_guest_sign_in_path, method: :post, class: "btn" %><br>
 </div>
 <div class="move-btn">
-    <%= link_to '管理者ログイン（閲覧用）', users_admin_guest_sign_in_path, method: :post, class: "btn" %>
+    <%= link_to '管理者ログイン(閲覧用)', users_admin_guest_sign_in_path, method: :post, class: "btn" %>
 </div>
 <div class="move-btn"
-></div>
+> <%= link_to "新規登録", new_user_registration_path, class: "btn" %></div>
 <div class="move-btn">
+ <%= link_to "ログイン", new_user_session_path, class: "btn" %>
 </div>
 </div>
 </div>

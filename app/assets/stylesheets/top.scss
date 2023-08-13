@@ -23,6 +23,7 @@
     line-height: 1.8;
     text-align: center;
     margin-right: 30px;
+    margin-bottom: 100px;
 
     .main_text {
       margin-bottom: 30px;
@@ -41,7 +42,7 @@
 }
 .top_link {
 display: flex;
-margin-top: 40px;
+
 justify-content: space-between;
   .btn {
     
@@ -54,9 +55,9 @@ justify-content: space-between;
   display: flex;
   justify-content: space-around;
   align-items: center;
-
+font-size: 2rem;
   
-  width: 200px;
+  width: 240px;
   padding: 10px 25px;
   color: #878787;
   transition: 0.3s ease-in-out;
@@ -68,7 +69,7 @@ justify-content: space-between;
     content: "";
     width: 100%;
     height: 2px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(95, 94, 94, 0.1);
     transform: translateX(-50%);
   }
   
@@ -79,7 +80,7 @@ justify-content: space-between;
     content: "";
     width: 100%;
     height: 2px;
-    background: #000;
+    background: #6b6a6a;
     transform: scale(0, 1);
     transform-origin: left top;
     transition: transform 0.3s;

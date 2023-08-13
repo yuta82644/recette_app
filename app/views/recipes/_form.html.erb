@@ -6,7 +6,7 @@
   <%= form_with(model: @recipe, local: true) do |f| %>
     <% if @recipe.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+        <h2><%= pluralize(@recipe.errors.count, "error") %> 件のエラーがあります:</h2>
         <ul>
           <% @recipe.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -34,9 +34,7 @@
           </div>
           <h3>材料</h3>
           <div id="cooking_ingredients">
-            <%= f.fields_for :cooking_ingredients do |ingredient| %>
-              <%= render partial: 'cooking_ingredient_fields', locals: { f: f, ingredient: ingredient } %>
-            <% end %>
+
           </div>
           <div class="ingredient_container">
             <%= link_to_add_association '材料追加⬇', f, :cooking_ingredients, wrap_object: :div, class: 'ingredient_container', render_options: { partial: 'recipes/cooking_ingredient_fields' } %>

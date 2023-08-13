@@ -16,9 +16,11 @@
     <% end %>
     <div class="recipe_new wrapper">
       <div class="recipe_container">
-        <div class="image_area">
+          <div class="image_area">
           <div class="image_box" id="image_preview"></div>
-          <%= f.file_field :image, class: "image_upload", accept: "image/*" %>
+          <%= image_tag(@recipe.image.url, class: "image_upload", accept: "image/*") if @recipe.image && @recipe.image.url %>
+          <%= f.file_field :image %>
+          <%= f.hidden_field :image_cacgit he %>
         </div>
         <div class="recipe_text_area">
           <div class="recipe_title_text">
@@ -34,7 +36,9 @@
           </div>
           <h3>材料</h3>
           <div id="cooking_ingredients">
-
+<%= f.fields_for :cooking_ingredients do |cooking_ingredient| %>
+    <%= render 'recipes/cooking_ingredient_fields', f: cooking_ingredient %>
+  <% end %>
           </div>
           <div class="ingredient_container">
             <%= link_to_add_association '材料追加⬇', f, :cooking_ingredients, wrap_object: :div, class: 'ingredient_container', render_options: { partial: 'recipes/cooking_ingredient_fields' } %>

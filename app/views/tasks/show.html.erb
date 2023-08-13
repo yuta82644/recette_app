@@ -1,11 +1,22 @@
-
+<%= render 'shared/sidebar' %>
 <div class="footer_fixed">
   <div class="task_container wrapper">
-  <h1><%= @task.title %></h1>
-  <p><%= @task.content %></p>
-  <p>Task Date: <%= @task.start_time %></p>
-
-  <%= link_to '削除', room_task_path(@room, @task), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
-  <%= link_to 'Back to Calendar', room_path(@room) %>
+    <div class="flex">
+      <div class="task_date">
+        <p><%= @task.start_time.strftime("%Y年%m月%d日") %></p>
+      </div>
+      <div class="task_content">
+        <h1><%= @task.title %></h1>
+        <div class="task_text">
+          <p><%= @task.content %></p>
+        </div>
+        <div class="move-btn">
+          <%= link_to '削除', room_task_path(@room, @task), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: "btn" %>
+        </div>
+      </div>
+    </div>
+    <div class="move-btn back">
+      <%= link_to 'Back to Calendar', room_path(@room), class:"btn" %>
+    </div>
   </div>
 </div>

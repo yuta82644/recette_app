@@ -63,6 +63,7 @@
       <%= link_to '削除', recipe_path(@recipe), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn favorite_btn"%>
     <% end %>
   
+      <h4 class="comment_text">Comment</h4>
     <div class="comment_container">
       <!-- コメント入力欄を表示するための部分 -->
       <%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>

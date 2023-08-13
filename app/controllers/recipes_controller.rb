@@ -79,7 +79,7 @@ class RecipesController < ApplicationController
       :public_post,
       :image_cache,
       procedures_attributes: [:procedure_comment, :_destroy],
-      cooking_ingredients_attributes: [:id, :ingredient_name, :quantity, :unit, :_destroy],
+      cooking_ingredients_attributes: [:ingredient_name, :quantity, :unit, :_destroy],
       category_ids: []
     )
   end

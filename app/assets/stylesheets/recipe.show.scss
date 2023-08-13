@@ -116,9 +116,17 @@
       color: #5a5959;
       border-left: 0.3px solid #c3c1c1;
       padding-left: 40px;
+      
     }
   }
-
+  .comment_container {
+    display: flex;
+    margin-bottom: 60px;
+    margin-top: 60px;
+  }
+  textarea {
+    margin-top: 30px;
+  }
   .btn {
     margin-left: 70%;
     color: #868484;

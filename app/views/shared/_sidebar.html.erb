@@ -4,10 +4,9 @@
     <span id="deleteconpo" class="toggler"></span>
   </div>
   <div class="logo">
-<a href="<%= recipes_path %>">
-   <%= image_tag '/images/recettelogo.png', class:"logo_img" %>
-  </a>
-
+    <a href="<%= recipes_path %>">
+      <%= image_tag '/images/recettelogo.png', class: "logo_img" %>
+    </a>
   </div>
   <ul>
     <li class="user_info">
@@ -16,9 +15,9 @@
           <% if current_user.image.present? %>
             <img src="<%= current_user.image %>" class="icon_image">
           <% else %>
-            <%= image_tag '/images/noimage-1-760x460.png', class: "icon_image" %>
+            <%= image_tag '/images/1590308.png', class: "icon_image" %>
           <% end %>
-          <p class="user_name"> <%= current_user.name %></p>
+          <p class="user_name"><%= current_user.name %></p>
         </div>
       <% else %>
         <p class="user_name">未ログインユーザー</p>
@@ -55,11 +54,11 @@
     <li>
       <% if current_user.try(:admin?) %>
         <%= link_to "管理者画面", rails_admin_path, class: "menu_text" %>
-        <% else %>
-                <p></p>
-        <% end %>
-            </li>
-          </ul>
-        </nav>
+      <% else %>
+        <p></p>
+      <% end %>
+    </li>
+  </ul>
+</nav>
 
-        <%= javascript_pack_tag 'sidebar.js' %>
+<%= javascript_pack_tag 'sidebar.js' %>

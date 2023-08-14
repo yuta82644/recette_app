@@ -1,7 +1,3 @@
-// edit.js.erb
 
-// コメントの編集フォームをロードし直す
 $("#this_comment_<%= @room_comment.id %>").replaceWith("<%= j render 'room_comments/edit', room: @room, comment: @room_comment %>");
-
-// フラッシュメッセージを表示
 $("#notice").html("<%= j flash[:notice] %>");

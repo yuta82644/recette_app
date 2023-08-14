@@ -2,16 +2,16 @@
 <div class="footer_fixed">
 <%= render 'shared/sidebar' %>
   <div class="room_index_container wrapper">
-<% if @user_rooms.present? %>
-  <h3>Your Rooms:</h3>
-  <% @user_rooms.each do |room| %>
-    <div class="room-card">
-      <div class="room_name">
-      <%= room.name %></li>      <!-- その他のルームの詳細をここに表示する -->
-      </div>
-    </div>
-  <% end %>
-<% end %>
+    <% if @user_rooms.present? %>
+      <h3>Your Rooms:</h3>
+      <% @user_rooms.each do |room| %>
+        <div class="room-card">
+          <div class="room_name">
+          <%= room.name %></li>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

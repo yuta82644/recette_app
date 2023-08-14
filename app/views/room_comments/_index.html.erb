@@ -1,11 +1,8 @@
-
-
 <ul class="comment-list">
   <% comments.each do |room_comment| %>
     <% if room_comment.id.present? %>
       <li class="comment-item">
-       
-          <div class="comment-content" id="this_comment_<%= room_comment.id %>">
+        <div class="comment-content" id="this_comment_<%= room_comment.id %>">
           <div class="comment-text">
             <p><%= room_comment.content %></p>
           </div>
@@ -13,26 +10,21 @@
             <% if room_comment.user.present? %>
               <p class="user-name">by: <%= room_comment.user.name %></p>
             <% end %>
-            <p class="created-at"> <%= room_comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+            <p class="created-at"><%= room_comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
           </div>
-          </div>
-<div class="comment-actions">
+        </div>
+        <div class="comment-actions">
           <% if room_comment.user == current_user %>
-            <div class="actions"> 
-              <%= link_to edit_room_room_comment_path(room, room_comment), remote: true, class:"edit-link" do %>
+            <div class="actions">
+              <%= link_to edit_room_room_comment_path(room, room_comment), remote: true, class: "edit-link" do %>
                 <i class="bi bi-pencil"></i>
-                
-                <% end %>
-                
-              <p><%= link_to  room_room_comment_path(room, room_comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"}, class: "delete-link" do %>
-                 <i class="bi bi-trash"></i>
-                 
-                 <% end %>
-                 
+              <% end %>
+              <%= link_to room_room_comment_path(room, room_comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか?" }, class: "delete-link" do %>
+                <i class="bi bi-trash"></i>
+              <% end %>
             </div>
           <% end %>
         </div>
-
       </li>
     <% end %>
   <% end %>

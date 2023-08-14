@@ -1,41 +1,31 @@
-# app/controllers/tasks_controller.rb
-
 class TasksController < ApplicationController
-   before_action :set_room
+  before_action :set_room
 
   def index
     @tasks = @room.tasks.all
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
-  # def new
-  #   @task = @room.tasks.new
-  # end
-
   def create
     @task = @room.tasks.new(task_params)
     if @task.save
       redirect_to room_path(@room), notice: 'タスクを作成しました'
     else
-      @tasks = @room.tasks.all 
-      
-    redirect_to room_path(@room), notice: 'title content dayを入力してください'
+      @tasks = @room.tasks.all
+      redirect_to room_path(@room), notice: 'title content dayを入力してください'
     end
   end
-  
+
   def show
-    
-    @room = Room.find(params[:room_id])
     @task = @room.tasks.find(params[:id])
   end
 
-
-   def destroy
-    @room = Room.find(params[:room_id])
+  def destroy
     @task = @room.tasks.find(params[:id])
     @task.destroy
     redirect_to room_path(@room), notice: '削除しました'
   end
+
   private
 
   def set_room

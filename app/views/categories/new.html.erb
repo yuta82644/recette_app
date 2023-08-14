@@ -1,38 +1,33 @@
 <%= render 'shared/sidebar' %>
+  <div class="footer_fixed">
+    <%= form_with(model: Category.new, url: categories_path, local: true) do |f| %>
+      <% if @category.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@category.errors.count, "error") %> 件のエラーがあります</h2>
+          <ul>
+            <% @category.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="category_container">
+        <div class="category_field">
+            <%= f.text_field :name, class: "text_area" %>
+          <div class="move-btn">
+              <%= f.submit "post", class: "btn" %>
+          </div>
+      <% end %>
+        </div>
 
-
-<div class="footer_fixed">
-
-  <%= form_with(model: Category.new, url: categories_path, local: true) do |f| %>
-<% if @category.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
-        <ul>
-          <% @category.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+        <div class="category_index">
+          <h4>Categoies</h4>
+            <% @categories.each do |category| %>
+              <p class="category_name"><%= category.name %></p>
+            <% end %>
+        </div>
       </div>
-    <% end %>
-    <div class="category_container">
-      
-      <div class="category_field">
-      <%= f.text_field :name, class: "text_area" %>
-      <div class="move-btn">
-    <%= f.submit "post", class: "btn" %>
-      </div>
-  <% end %>
-      </div>
-
-<div class="category_index">
-  <h4>Categoies</h4>
-  <% @categories.each do |category| %>
-    <p class="category_name"><%= category.name %></p>
-    
-  <% end %>
-</div>
     </div>
-</div>
 </div>
 
 

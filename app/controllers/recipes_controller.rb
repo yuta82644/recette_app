@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
     # @cooking_ingredients = @recipe.cooking_ingredients
 
     if @recipe.update(recipe_params)
-      redirect_to recipes_path(@recipe), notice: "レシピを更新しました"
+      redirect_to recipe_path(@recipe), notice: "レシピを更新しました"
     else
       render :edit
     end

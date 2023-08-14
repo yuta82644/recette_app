@@ -21,49 +21,39 @@ class RecipesController < ApplicationController
     @public_post = public_post?
     @categories = Category.all
   end
-  
+
   def create
     @recipe = current_user.recipes.build(recipe_params)
     @user_rooms = current_user.rooms
-    
+
     if @recipe.save
       redirect_to recipe_path(@recipe), notice: "レシピを投稿しました！"
     else
       render :new
     end
   end
-  
+
   def show
     @recipe = Recipe.find(params[:id])
     @favorite = current_user.favorites.find_by(recipe_id: @recipe.id)
     @comment = @recipe.comments.build
     @comments = @recipe.comments.order(created_at: :desc)
   end
-  
+
   def edit
     @recipe = Recipe.find(params[:id])
     @user_rooms = user_signed_in? ? current_user.rooms : []
-    @procedures = @recipe.procedures
-    @cooking_ingredients = @recipe.cooking_ingredients
-    @recipe.procedures.build
-    @recipe.cooking_ingredients.build
-    
+    # @procedures = @recipe.procedures
+    # @cooking_ingredients = @recipe.cooking_ingredients
   end
-  
+
   def update
     @recipe = Recipe.find(params[:id])
-    @procedures = @recipe.procedures
-    @cooking_ingredients = @recipe.cooking_ingredients
-    
-    
-    
+    # @procedures = @recipe.procedures
+    # @cooking_ingredients = @recipe.cooking_ingredients
+
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe), notice: "レシピを更新しました"
-      binding.pry
-      
-   
-   
-      
+      redirect_to recipes_path(@recipe), notice: "レシピを更新しました"
     else
       render :edit
     end
@@ -93,7 +83,7 @@ class RecipesController < ApplicationController
       :public_post,
       :image_cache,
       procedures_attributes: [:procedure_comment,:id, :_destroy],
-      cooking_ingredients_attributes: [:ingredient_name, :quantity, :unit, :_destroy],
+      cooking_ingredients_attributes: [:id, :ingredient_name, :quantity, :unit, :_destroy],
       category_ids: []
     )
   end

@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+    recipe: レシピ
+  attributes:
+    recipe:
+      short_comment: 一言コメント
+      category_ids: カテゴリー
+      tortal_quantity: 出来高
+

@@ -17,11 +17,12 @@ CarrierWave.configure do |config|
     }
       config.fog_public     = false
   config.fog_attributes = {'Cache-Control' => 'public, max-age=86400'}
-  end
   case Rails.env
-    when 'production'
-      config.fog_directory = 'recette-production'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/recette-production'
+  when 'production'
+    config.fog_directory = 'recette-production'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/recette-production'
   end
+  
+end
 
 end

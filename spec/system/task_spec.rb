@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'ルームでのコメント機能', type: :system do
-  it "コメント投稿出来る" do
+  it "コメント投稿できる" do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
 
@@ -18,13 +18,11 @@ RSpec.describe 'ルームでのコメント機能', type: :system do
 
     button = find('input[type="submit"][value="create task"]')
     page.execute_script("arguments[0].click();", button)
-    sleep(6)
 
     expect(page).to have_content('タスクを作成しました')
-
   end
 
-  it "task投稿後showページで削除できる" do
+  it "タスク投稿後、showページで削除できる" do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
 
@@ -45,13 +43,10 @@ RSpec.describe 'ルームでのコメント機能', type: :system do
     task = Task.last
     visit room_task_path(room_id: task.room_id, id: task.id)
 
-
     delete_button = find('a[data-method="delete"]')
     page.execute_script("arguments[0].click();", delete_button)
     page.driver.browser.switch_to.alert.accept
 
     expect(page).to have_content('削除しました')
-
-
   end
 end

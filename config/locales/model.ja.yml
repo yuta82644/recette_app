@@ -1,10 +1,26 @@
 ja:
   activerecord:
     models:
-    recipe: レシピ
-  attributes:
-    recipe:
-      short_comment: 一言コメント
-      category_ids: カテゴリー
-      tortal_quantity: 出来高
-
+      recipe: レシピ
+      user: ユーザー
+      comment: コメント
+      cooking_ingredients: 材料
+      favorites: お気に入り
+      procedure_comment: 作り方
+      task: タスク
+    attributes:
+      recipe:
+        title: タイトル
+        short_comment: 一言コメント
+        tortal_quantity: 出来高
+        category_ids: カテゴリー
+      comment:
+        content: コメント
+      cooking_ingredient:
+        ingredient_name: 材料名
+        unit: 単位
+        quantity: 量
+      procedures:
+        procedure_comment: 作り方
+      room:
+        name: ルーム名

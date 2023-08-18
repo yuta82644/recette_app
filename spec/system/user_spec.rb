@@ -15,13 +15,14 @@ RSpec.describe 'ユーザー機能のテスト', type: :system do
   before do
     @user = FactoryBot.create(:third_user) 
   end
-    it 'ログインするとレシピ一覧画面画面に遷移する' do
-      visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+  it 'ログインするとレシピ一覧画面画面に遷移する' do
+    visit new_user_session_path
+    fill_in 'user_email', with: @user.email
+    fill_in 'user_password', with: @user.password
     button = find('input[type="submit"][value="ログイン"]')
       page.execute_script("arguments[0].click();", button)
 
+    
       expect(page).to have_content 'Open to the public'
     end
   end
@@ -77,4 +78,6 @@ RSpec.describe 'ユーザー機能のテスト', type: :system do
       expect(current_path).to eq root_path
     end
   end
+
+
 end

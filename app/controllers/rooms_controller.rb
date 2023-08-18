@@ -29,7 +29,7 @@ class RoomsController < ApplicationController
     @room.owner = current_user
 
     if @room.save
-      redirect_to edit_room_path(@room), notice: "Room was successfully created."
+      redirect_to edit_room_path(@room), notice: "新しいルームを作成しました"
     else
       render :new
     end

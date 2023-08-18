@@ -5,10 +5,10 @@ RSpec.describe 'レシピ投稿機能', type: :system do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
     category = FactoryBot.create(:category, name: "testcategory")
-    fill_in 'user_email', with: @user.email
-    fill_in 'user_password', with: @user.password
-    button = find('input[type="submit"][value="ログイン"]')
-    page.execute_script("arguments[0].click();", button)
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      button = find('input[type="submit"][value="ログイン"]')
+      page.execute_script("arguments[0].click();", button)
 
     visit new_recipe_path
 

@@ -5,7 +5,7 @@ FactoryBot.define do
     tortal_quantity { "2人分" }
     short_comment { "美味しいレシピです" }
     public { true }
-    room_id = first
+    room
     after(:build) do |recipe|
       recipe.cooking_ingredients << build(:cooking_ingredient, recipe: recipe, ingredient_name: "テスト材料1")
       recipe.procedures << build(:procedure, recipe: recipe, procedure_comment: "手順1")

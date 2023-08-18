@@ -1,13 +1,13 @@
 <div class="ingredient_container nested-fields">
 
   <div class="ingredint_area">
-    <%= f.text_field :ingredient_name, class: "ingredint_form" %>
+    <%= f.text_field :ingredient_name, class: "ingredint_form", placeholder: '材料' %>
   </div>
   <div class="quntity_area">
-    <%= f.number_field :quantity, class: "quntity_form" %>
+    <%= f.number_field :quantity, class: "quntity_form",placeholder: '量' %>
   </div>
   <div class="unit_area">
-    <%= f.text_field :unit, class: "unit_form" %>
+    <%= f.text_field :unit, class: "unit_form", placeholder: "単位" %>
   </div>
   <button class="trash3" type="button">
     <i class="bi bi-trash3"></i>

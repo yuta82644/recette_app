@@ -1,6 +1,7 @@
 
 <%= render 'shared/sidebar' %>
 <div class="footer_fixed">
+  <%= render "devise/shared/error_messages", resource: resource %>
 <div class="container">
   <div class="login-container">
     <div class="output"></div>
@@ -11,7 +12,6 @@
 <h2 class="login_title"><%= t('.title', resource: resource_name.to_s.humanize) %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
 
   <div class="field">

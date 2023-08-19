@@ -10,10 +10,12 @@
 - devise
 - Ajaxコメント機能
 - AWS
-
+- rails_admin
+- cancancan
 ## カリキュラム外の技術
 - ransack
-- カレンダー機能
+- simple_calendar
+- cocoon
 
 # 実行手順
 
@@ -36,16 +38,16 @@ https://docs.google.com/spreadsheets/d/1htXME0jdYTyiM7pk6H_RzcsobPPdnlERCT_RuI8G
 ## ワイヤーフレーム
 
 [FigmaURL]
-https://www.figma.com/file/zTsINAcFCfJmIcDZbaUw07/recette%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%BC%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0?type=design&node-id=0%3A1&mode=design&t=VP4Ft7Ie8988uSMe-1
+https://www.figma.com/file/5hD1seSZD5aIgGdpbqotrJ/recette%2F%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%BC%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0?type=design&node-id=0%3A1&mode=design&t=enRUV40Kzr9lKN0C-1
 
 [スクリーンショット]
-<img width="708" alt="スクリーンショット 2023-07-16 16 37 36" src="https://github.com/yuta82644/recette_app/assets/130124114/b99f4644-31f9-416c-adc5-e484440143fb">
+<img width="833" alt="スクリーンショット 2023-08-19 11 25 35" src="https://github.com/yuta82644/recette_app/assets/130124114/67b903be-21d4-4318-9b5f-e16a32f29b7d">
 
 ## ER図
 [スクリーンショット]
-<img width="547" alt="スクリーンショット 2023-07-18 8 28 12" src="https://github.com/yuta82644/recette_app/assets/130124114/d1c471b5-e8e8-4f7e-bc39-49e86095d72f">
+<img width="710" alt="スクリーンショット 2023-08-19 9 51 51" src="https://github.com/yuta82644/recette_app/assets/130124114/0c2ba0b3-7b77-413c-b84a-7584ce973a31">
 
 ## 画面遷移図
 
 [スクリーンショット]
-<img width="886" alt="スクリーンショット 2023-07-14 15 48 46" src="https://github.com/yuta82644/recette_app/assets/130124114/d1a42cc4-2a6e-43e8-943a-fb7e9470e6ad">
+<img width="864" alt="スクリーンショット 2023-08-19 10 50 10" src="https://github.com/yuta82644/recette_app/assets/130124114/ad881c74-01f1-4265-9e3e-12afc3a52beb">

@@ -4,10 +4,16 @@ ja:
       recipe: レシピ
       user: ユーザー
       comment: コメント
-      cooking_ingredients: 材料
-      favorites: お気に入り
+      cooking_ingredient: 材料
+      favorite: お気に入り
       procedure_comment: 作り方
       task: タスク
+      category: カテゴリー
+      procedure: 作り方
+      room: ルーム
+      room_assign: ルーム中間
+      recipe_category: カテゴリー中間
+      room_comment: ルームコメント
     attributes:
       recipe:
         title: タイトル

@@ -9,7 +9,7 @@
     <%= form_with(model: @room, url: invite_member_room_path(@room), method: :post, local: true) do |invite_form| %>
       <div class="edit_container">
         <div class="invite_area">
-          <h4>invite by name</h4>
+          <h4>名前でルーム招待</h4>
           <%= invite_form.text_field :invite_name, class: "text_field" %>
           <div class="move-btn">
             <%= invite_form.submit "招待する", class: "btn" %>
@@ -18,7 +18,7 @@
       </div>
 
       <div class="member_index">
-        <h4>Members</h4>
+        <h4>メンバー一覧</h4>
         <div class="owner_area">
           <span>owner:</span> <p><%= @room.owner.name %></p>
         </div>
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="rename_area">
-      <h3 class="name_text">Room rename</h3>
+      <h3 class="name_text">名前変更</h3>
       <%= form_with(model: @room, url: room_path(@room), method: :patch, local: true) do |f| %>
         <div class="name_field">
           <%= f.text_field :name, class: "text_field" %>

@@ -25,11 +25,11 @@
     </li>
     <li><%= link_to "レシピ作成", new_recipe_path, class: "menu_text" %></li>
     <li><%= link_to "カテゴリー管理", new_category_path, class: "menu_text" %></li>
-    <li><%= link_to 'My Recipes', my_recipes_recipes_path, class: "menu_text" %></li>
-    <li><%= link_to 'My favorite', favorites_path, class: "menu_text" %></li>
+    <li><%= link_to '自分のレシピ', my_recipes_recipes_path, class: "menu_text" %></li>
+    <li><%= link_to 'お気に入り一覧', favorites_path, class: "menu_text" %></li>
     <li>
       <% if current_user && current_user.rooms.any? %>
-        <%= link_to "YourRoom", rooms_path, class: "menu_text" %>
+        <%= link_to "所属しているルーム", rooms_path, class: "menu_text" %>
         <ul class="scroll">
           <% current_user.rooms.each do |room| %>
             <li><%= link_to room.name, room_path(room), class: "menu_room_text" %></li>

@@ -109,13 +109,13 @@ recipe = Recipe.create!(
       
       
       comments_data = [
-        { user_id: 4, recipe_id: 1, content: "美味しそうなレシピですね！" },
-        { user_id: 3, recipe_id: 1, content: "作ってみたいと思います！" },
-  { user_id: 4, recipe_id: 1, content: "簡単でした" },
-  { user_id: 2, recipe_id: 1, content: "美味しかったです" },
-  { user_id: 5, recipe_id: 1, content: "美味しく作れました"},
-  { user_id: 5, recipe_id: 1, content: "160度のオーブン試しました" },
-  { user_id: 5, recipe_id: 1, content: "美味しかったです" }
+        { user_id: 4, recipe_id: 6, content: "美味しそうなレシピですね！" },
+        { user_id: 3, recipe_id: 6, content: "作ってみたいと思います！" },
+  { user_id: 4, recipe_id: 6, content: "簡単でした" },
+  { user_id: 2, recipe_id: 6, content: "美味しかったです" },
+  { user_id: 5, recipe_id: 6, content: "美味しく作れました"},
+  { user_id: 5, recipe_id: 6, content: "160度のオーブン試しました" },
+  { user_id: 5, recipe_id: 6, content: "美味しかったです" }
 ]
 
 # クッキーに対してのコメント

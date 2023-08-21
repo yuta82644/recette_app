@@ -85,6 +85,5 @@ gem "jquery-rails"
 gem 'rails-i18n'
 gem 'fog-aws'
 gem 'dotenv-rails'
- gem 'unicorn'
- gem 'fog-aws'
- 
+gem 'unicorn'
+gem 'fog-aws'

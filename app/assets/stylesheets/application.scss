@@ -111,7 +111,11 @@ footer {
   color: #878787;
   transition: 0.3s ease-in-out;
   font-weight: 500;
-
+a {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #868484;
+}
   &:before {
     position: absolute;
     bottom: 0px;

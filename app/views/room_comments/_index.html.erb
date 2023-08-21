@@ -1,5 +1,5 @@
 <ul class="comment-list">
-  <% comments.each do |room_comment| %>
+  <% comments.order(created_at: :desc).each do |room_comment| %>
     <% if room_comment.id.present? %>
       <li class="comment-item">
         <div class="comment-content" id="this_comment_<%= room_comment.id %>">

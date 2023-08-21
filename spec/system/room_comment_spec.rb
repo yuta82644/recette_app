@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'ルームでのコメント機能', type: :system do
-  it "コメント投稿できる" do
+  context 'コメント投稿すると'
+  it "コメント表示できる" do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
 
@@ -19,7 +20,8 @@ RSpec.describe 'ルームでのコメント機能', type: :system do
     expect(page).to have_content('test comment')
   end
 
-  it "コメント投稿後に削除できる" do
+  context 'コメント投稿後'
+  it "削除できる" do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
 
@@ -42,7 +44,8 @@ RSpec.describe 'ルームでのコメント機能', type: :system do
     expect(page).not_to have_content('test comment')
   end
 
-  it "コメント投稿後に編集できる" do
+  context 'コメント投稿後'
+  it "編集できる" do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
 

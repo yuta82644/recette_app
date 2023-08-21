@@ -2,7 +2,8 @@
 require 'rails_helper'
 
 RSpec.describe 'レシピ投稿機能', type: :system do
-  it 'レシピを投稿できる（詳細画面にリダイレクトされる）' do
+  context 'レシピを投稿すると'
+  it '詳細画面にリダイレクトされる' do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
     category = FactoryBot.create(:category, name: "testcategory")
@@ -31,6 +32,7 @@ RSpec.describe 'レシピ投稿機能', type: :system do
     expect(page).to have_content 'テストレシピ'
   end
 
+  context 'レシピ投稿後'
   it '削除できる' do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
@@ -65,7 +67,7 @@ RSpec.describe 'レシピ投稿機能', type: :system do
 
     expect(page).to have_content 'レシピを削除しました'
   end
-
+  context 'レシピ投稿後'
   it '編集出来る' do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
@@ -102,7 +104,9 @@ RSpec.describe 'レシピ投稿機能', type: :system do
     expect(page).to have_content 'レシピを更新しました'
     expect(page).to have_content '編集されたテストレシピ'
   end
- it 'レシピを投稿できる (publicにチェックを入れると一般公開されている)' do
+
+  context 'レシピ投稿時publicにチェックを入れていると'
+  it '一般公開されている' do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
     category = FactoryBot.create(:category, name: "testcategory")
@@ -134,7 +138,8 @@ RSpec.describe 'レシピ投稿機能', type: :system do
     expect(page).to have_content '一般公開レシピ'
   end
 
-  it 'レシピを投稿できる (publicにチェックを入れずに投稿でroom公開される)' do
+  context 'レシピ投稿時publicにチェックを入れていないと'
+  it 'room公開される' do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
     category = FactoryBot.create(:category, name: "testcategory")

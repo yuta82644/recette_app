@@ -10,17 +10,17 @@
 
 
 User.create!(name: "admin_user", email: "admin@example.com", password: "111111", password_confirmation: "111111", admin: true)
-User.create!(name: "user2", email: "2222@example.com", password: "222222", password_confirmation: "222222", admin: false)
-User.create!(name: "user3", email: "3333@example.com", password: "333333", password_confirmation: "333333", admin: false)
-User.create!(name: "user4", email: "4444@example.com", password: "444444", password_confirmation: "444444", admin: false)
-User.create!(name: "user5", email: "5555@example.com", password: "555555", password_confirmation: "555555", admin: false)
-User.create!(name: "user6", email: "6666@example.com", password: "666666", password_confirmation: "666666", admin: false)
+User.create!(name: "yuta", email: "2222@example.com", password: "222222", password_confirmation: "222222", admin: false)
+User.create!(name: "kenta", email: "3333@example.com", password: "333333", password_confirmation: "333333", admin: false)
+User.create!(name: "touma", email: "4444@example.com", password: "444444", password_confirmation: "444444", admin: false)
+User.create!(name: "taro", email: "5555@example.com", password: "555555", password_confirmation: "555555", admin: false)
+User.create!(name: "narumi", email: "6666@example.com", password: "666666", password_confirmation: "666666", admin: false)
 
-Room.create!(name: "Room1(seed)", owner_id: 1)
-Room.create!(name: "Room2", owner_id: 2)
-Room.create!(name: "Room3", owner_id: 3)
-Room.create!(name: "Room4", owner_id: 4)
-Room.create!(name: "Room5", owner_id: 5)
+Room.create!(name: "Patisserie(seed)", owner_id: 1)
+Room.create!(name: "ケーキ屋", owner_id: 2)
+Room.create!(name: "Sky", owner_id: 3)
+Room.create!(name: "Fujiya", owner_id: 4)
+Room.create!(name: "Coo", owner_id: 5)
 
 
 
@@ -54,7 +54,7 @@ end
 
 # ババロアのレシピ５つ
 5.times do |n|
-user = User.find_by(name: "user3")
+user = User.find_by(name: "kenta")
 category = Category.find_by(name: "冷菓")
 
 recipe = Recipe.create!(
@@ -82,7 +82,7 @@ procedure = Procedure.create!(
 )
 end
 
-user = User.find_by(name: "user2")
+user = User.find_by(name: "yuta")
 category = Category.find_by(name: "焼き菓子")
 
 recipe = Recipe.create!(
@@ -145,7 +145,7 @@ end
 
 # Room1にレシピ
 5.times do |n|
-user = User.find_by(name: "user2")
+user = User.find_by(name: "kenta")
 category = Category.find_by(name: "季節限定")
 
 recipe = Recipe.create!(

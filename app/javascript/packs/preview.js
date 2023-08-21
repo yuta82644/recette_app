@@ -1,17 +1,22 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const imageUpload = document.querySelector(".image_upload");
-  const imageBox = document.querySelector("#image_preview"); // プレビュー用の div の ID を指定
 
+document.removeEventListener("turbolinks:load", turbolinksLoadHandler);
+
+const imageUpload = document.querySelector(".image_upload");
+const imageBox = document.querySelector("#image_preview");
+
+if (imageUpload) {
   imageUpload.addEventListener("change", function (event) {
     const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function () {
-        imageBox.style.backgroundImage = `url('${reader.result}')`;
-      };
-      reader.readAsDataURL(file);
-    } else {
-      imageBox.style.backgroundImage = "none";
-    }
+    imageBox.style.backgroundImage = file ? `url('${URL.createObjectURL(file)}')` : "none";
   });
-});
+}
+
+
+document.addEventListener("turbolinks:load", turbolinksLoadHandler);
+
+
+function turbolinksLoadHandler() {
+}
+
+
+turbolinksLoadHandler();

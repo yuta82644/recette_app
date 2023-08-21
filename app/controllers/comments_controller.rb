@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-          @comments = @recipe.comments.order(created_at: :desc) 
+          @comments = @recipe.comments.order(created_at: :desc)
         format.js {render :index}
       else
   format.html { redirect_to recipe_path(@recipe), notice: 'コメントを投稿できませんでした...' }

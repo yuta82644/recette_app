@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'ユーザー機能のテスト', type: :system do
   describe 'ユーザーのアカウント登録機能のテスト' do
-    it '新規登録後、レシピ一覧画面に遷移する' do
+    context '新規登録後'
+    it 'レシピ一覧画面に遷移する' do
       visit new_user_registration_path
       fill_in 'user_name', with: 'test_user_01'
       fill_in 'user_email', with: 'test_user_01@exam.com'

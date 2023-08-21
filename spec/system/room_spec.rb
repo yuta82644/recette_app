@@ -20,6 +20,7 @@ RSpec.describe 'ルーム機能', type: :system do
     expect(page).to have_content '新しいルームを作成しました'
   end
 
+  context 'ルームを作成後'
   it 'ルームを削除できる' do
     visit new_user_session_path
 
@@ -41,6 +42,7 @@ RSpec.describe 'ルーム機能', type: :system do
     expect(page).to have_content 'ルームを削除しました。'
   end
 
+  context 'ルーム作成後に'
   it 'ルームを編集できる' do
     visit new_user_session_path
 
@@ -62,7 +64,8 @@ RSpec.describe 'ルーム機能', type: :system do
     expect(page).to have_content '新しいルーム名'
   end
 
-  it 'ルームに招待できる' do
+  context 'ルーム作成後'
+  it 'ルームに名前で招待できる' do
     visit new_user_session_path
 
     fill_in 'user_email', with: second_user.email
@@ -82,7 +85,8 @@ RSpec.describe 'ルーム機能', type: :system do
     expect(page).to have_content 'test03'
   end
 
-  it '招待したユーザーを削除できる' do
+  context 'ルームに招待後'
+  it 'ユーザーを削除できる' do
     visit new_user_session_path
 
     fill_in 'user_email', with: second_user.email

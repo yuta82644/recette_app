@@ -6,7 +6,7 @@ RSpec.describe '管理者ログイン機能', type: :system do
       @user = FactoryBot.create(:third_user) 
       visit new_user_session_path
     end
-
+    context '管理者でログインすると'
     it 'admin画面に遷移できる' do
       visit new_user_session_path
       fill_in 'user_email', with: @user.email

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'ルームでのコメント機能', type: :system do
-  it "コメント投稿できる" do
+RSpec.describe 'ルームでのタスク機能', type: :system do
+
+  it "投稿できる" do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
 
@@ -22,7 +23,8 @@ RSpec.describe 'ルームでのコメント機能', type: :system do
     expect(page).to have_content('タスクを作成しました')
   end
 
-  it "タスク投稿後、showページで削除できる" do
+  context 'タスク投稿後'
+  it "showページで削除できる" do
     @user = FactoryBot.create(:second_user)
     visit new_user_session_path
 

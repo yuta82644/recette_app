@@ -83,7 +83,7 @@
 
     <div class="task_container">
       <div class="calendar_area">
-        <%= month_calendar events: @tasks, start_date: Date.today, click_day: room_tasks_path(@room, date: '%{day}'), locale: :ja do |date, tasks| %>
+        <%= month_calendar events: @tasks, click_day: room_tasks_path(@room, date: '%{day}'), locale: :ja do |date, tasks| %>
           <%= date.day %>
           <% tasks.each do |task| %>
             <p><%= link_to task.title, room_task_path(@room, task) %></p>

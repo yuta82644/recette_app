@@ -4,13 +4,13 @@
 .simple-calendar {
   background-color: #fffefe;
   color: #007bff;
-  
+
   table {
     border: none;
-   th {
-    color: #626161;
-    font-weight: 200;
-   }
+    th {
+      color: #626161;
+      font-weight: 200;
+    }
   }
   .prev-month {
     background-color: #ffffff;
@@ -30,7 +30,7 @@
   .today {
     background: #eaeaea;
   }
-  
+
   .table {
     border-collapse: collapse;
   }
@@ -71,7 +71,6 @@
 
     /* 前月・次月のスタイルを変更 */
 
-    
     /* 未来の日付のスタイルを変更 */
   }
 }

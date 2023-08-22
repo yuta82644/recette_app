@@ -1,42 +1,35 @@
-
-
 <div class="footer_fixed">
-
-
-<div class="top_content wrapper">
-    <div class="top_img">
-     <%= image_tag '/images/recettelogo.png', class: "logo_img" %>
+    <div class="top_content wrapper">
+        <div class="top_img">
+            <%= image_tag '/images/recettelogo.png', class: "logo_img" %>
+        </div>
+        <div class="top_text">
+            <p class="main_text">[recette(ルセット)]とはフランス語で「レシピ」という意味です</p>
+            <p class="main_sab">料理好きな皆さん, 飲食店で働く方に向けた<br>レシピ共有プラットフォームです。</p>
+            <p class="sab">
+                特徴の一つは、ルーム機能です。<br>投稿時に一般公開とルーム公開と分ける事ができるので<br>
+                職場の同僚や友達同士で<br>特定の人たちと限定的にレシピを共有することができます。<br>
+                さらに、カレンダー機能でタスク、スケジュールの管理をすることができます。<br>
+                ルームページではチャット機能も備わっており<br>職場での情報伝達、レシピの進捗を共有したりすることができます。<br>
+            </p>
+            <p class="sab sab_2">
+                レシピ詳細画面では、コメント機能が活躍します。他のユーザーと交流し<br>
+                料理に対する感想やアドバイス、アイデア交換ができます。
+            </p>
+        </div>
     </div>
-    <div class="top_text">
-
-    <p class="main_text">[recette(ルセット)]とはフランス語で「レシピ」という意味です</p>
-<p class="main_sab">料理好きな皆さん, 飲食店で働く方に向けた<br>レシピ共有プラットフォームです。
-   </p>
-
-<p class="sab"> 特徴の一つは、ルーム機能です。<br>投稿時に一般公開とルーム公開と分ける事ができるので<br>職場の同僚や友達同士で<br>特定の人たちと限定的にレシピを共有することができます。<br>
-
-さらに、カレンダー機能でタスク、スケジュールの管理をすることができます。<br>
-ルームページではチャット機能も備わっており<br>職場での情報伝達、レシピの進捗を共有したりすることができます。<br></p>
-<p class="sab sab_2">
-レシピ詳細画面では、コメント機能が活躍します。他のユーザーと交流し<br>料理に対する感想やアドバイス、アイデア交換ができます。
-
-</p>
+    <div class="top_link wrapper">
+        <div class="move-btn">
+            <%= link_to 'ゲストログイン(閲覧用）', users_guest_sign_in_path, method: :post, class: "btn" %><br>
+        </div>
+        <div class="move-btn">
+            <%= link_to '管理者ログイン(閲覧用)', users_admin_guest_sign_in_path, method: :post, class: "btn" %>
+        </div>
+        <div class="move-btn">
+            <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
+        </div>
+        <div class="move-btn">
+            <%= link_to "ログイン", new_user_session_path, class: "btn" %>
+        </div>
     </div>
-
-
-</div>
-
-<div class="top_link wrapper">
-<div class="move-btn">
-<%= link_to 'ゲストログイン(閲覧用）', users_guest_sign_in_path, method: :post, class: "btn" %><br>
-</div>
-<div class="move-btn">
-    <%= link_to '管理者ログイン(閲覧用)', users_admin_guest_sign_in_path, method: :post, class: "btn" %>
-</div>
-<div class="move-btn"
-> <%= link_to "新規登録", new_user_registration_path, class: "btn" %></div>
-<div class="move-btn">
- <%= link_to "ログイン", new_user_session_path, class: "btn" %>
-</div>
-</div>
 </div>

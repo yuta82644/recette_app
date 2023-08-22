@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-  @recipe = Recipe.find(params[:recipe_id])  # 修正：@recipe を先に定義する
+  @recipe = Recipe.find(params[:recipe_id])
   @comment = @recipe.comments.find(params[:id])
 
   respond_to do |format|

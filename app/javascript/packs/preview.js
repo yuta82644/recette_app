@@ -11,12 +11,9 @@ if (imageUpload) {
   });
 }
 
-
 document.addEventListener("turbolinks:load", turbolinksLoadHandler);
-
 
 function turbolinksLoadHandler() {
 }
-
 
 turbolinksLoadHandler();

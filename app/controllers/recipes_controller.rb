@@ -43,15 +43,10 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @user_rooms = user_signed_in? ? current_user.rooms : []
-    # @procedures = @recipe.procedures
-    # @cooking_ingredients = @recipe.cooking_ingredients
   end
 
   def update
     @recipe = Recipe.find(params[:id])
-    # @procedures = @recipe.procedures
-    # @cooking_ingredients = @recipe.cooking_ingredients
-
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe), notice: "レシピを更新しました"
     else

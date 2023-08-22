@@ -86,19 +86,16 @@
     color: #656363;
     letter-spacing: 0.05rem;
     line-height: 1.8;
-    border:0.3px solid #b4b1b1 ;
-
+    border: 0.3px solid #b4b1b1;
   }
   input {
     width: 100px;
     color: #848484;
     border: none;
-    border-bottom:0.3px solid #6b6a6a ;
+    border-bottom: 0.3px solid #6b6a6a;
     background-color: #ffffff;
     &:hover {
       opacity: 0.7;
     }
   }
 }
-
-

@@ -48,7 +48,7 @@ a {
   display: flex;
   align-items: center;
   margin-bottom: 40px;
-  
+
   .logo_img {
     width: 145px;
     margin-top: 5px;
@@ -105,17 +105,17 @@ footer {
   justify-content: space-around;
   align-items: center;
   font-size: 2rem;
-  
+
   width: 200px;
   padding: 10px 25px;
   color: #878787;
   transition: 0.3s ease-in-out;
   font-weight: 500;
-a {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #868484;
-}
+  a {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #868484;
+  }
   &:before {
     position: absolute;
     bottom: 0px;

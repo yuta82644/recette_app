@@ -3,8 +3,6 @@ class TopController < ApplicationController
 
   def index
   end
-  
-
   private
 
   def skip_index_for_logged_in_users

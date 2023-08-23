@@ -27,6 +27,6 @@ CarrierWave.configure do |config|
     end
   else
     config.storage :file
-    config.enable_processing = false if Rails.env.test?  # テスト環境では処理を無効化
+    config.enable_processing = false if Rails.env.test?
   end
 end

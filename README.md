@@ -6,16 +6,15 @@
 - Ruby 3.0.1
 - Ruby on Rails 6.1.6
 
-## 就職Termの技術
+## 使用技術
 - devise
 - Ajaxコメント機能
-- AWS
 - rails_admin
 - cancancan
-## カリキュラム外の技術
 - ransack
 - simple_calendar
 - cocoon
+- AWS (EC2 C3)
 
 # 実行手順
 

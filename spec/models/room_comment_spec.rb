@@ -10,7 +10,7 @@ RSpec.describe RoomComment, type: :model do
     end
 
     context 'コメントの内容が記入された場合' do
-      it 'バリデーションに成功する' do
+      it 'バリデーシ' do
         room_comment = FactoryBot.build(:room_comment, content: "テストコメント")
         expect(room_comment).to be_valid
       end

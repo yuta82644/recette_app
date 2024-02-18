@@ -43,7 +43,6 @@
   width: 100%;
   height: 300px;
   object-fit: cover;
-
 }
 .recipe_text {
   text-align: center;
@@ -68,18 +67,18 @@ span {
 
 .sab_text_area {
   display: flex;
-  justify-content: space-between; /* 要素間を均等にスペースを空ける */
-  align-items: flex-end; /* 下揃え */
+  justify-content: space-between;
+  align-items: flex-end;
   margin-top: 10px;
 }
 .recipe-info {
   display: flex;
-  align-items: center; /* 縦方向中央揃え */
+  align-items: center;
 }
 
 .span_text {
   margin-left: -150px;
-    color: #c0c0c0b3;
+  color: #c0c0c0b3;
 }
 .sab_span {
   display: flex;
@@ -126,7 +125,6 @@ span {
   }
 }
 
-
- .edit-link {
- margin-left: 40px;
- }
+.edit-link {
+  margin-left: 40px;
+}
